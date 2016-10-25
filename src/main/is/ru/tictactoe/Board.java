@@ -12,5 +12,11 @@ public class Board{
 	}
     }    
 
+    public boolean isCellEmpty(int row, int col){
+	if( board[row][col] == 0 )
+	    return true;
+	else
+	    return false;
+    }
 
 }
