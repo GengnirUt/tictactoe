@@ -18,5 +18,13 @@ public class InputTest {
 		
 		assertEquals(0, Input.getPlayerMode());
 	}
+	
+	@Test
+    public void testGetPlayerMove() {
+		String inputData = "1 2";
+		System.setIn(new ByteArrayInputStream(inputData.getBytes()));
+		
+		assertArrayEquals(new int[]{1,2}, Input.getPlayerMove());
+    }
 
 }
