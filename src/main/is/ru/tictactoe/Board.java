@@ -1,3 +1,5 @@
+package is.ru.tictactoe;
+
 public class Board{
     
     private int[][] board;
