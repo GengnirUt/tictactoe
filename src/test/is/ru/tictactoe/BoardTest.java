@@ -18,5 +18,11 @@ public class BoardTest{
 	assertEquals(true, board.isCellEmpty(1,2));
     }
 
+    @Test
+    public void testMarkCellPlayed(){
+	Board board = new Board();
+	board.markCellPlayed(1, 0, 0);
+	assertEquals(false, board.isCellEmpty(0,0);
+    }
 
 }
