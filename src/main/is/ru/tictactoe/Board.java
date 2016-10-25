@@ -18,5 +18,10 @@ public class Board{
 	else
 	    return false;
     }
+    
+    public void markCellPlayed(int player, int row, int col){
+	if(isCellEmpty(row, col)
+	   board[row][col] = player;
+    }
 
 }
