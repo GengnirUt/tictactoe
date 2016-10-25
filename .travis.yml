@@ -7,4 +7,4 @@ sudo: required
 before_install:
 - chmod +x gradlew
 
-install: .gradlew assemble --stacktrace
+install: ./gradlew assemble --stacktrace
