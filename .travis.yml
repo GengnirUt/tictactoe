@@ -4,5 +4,5 @@ jdk:
 
 sudo: required
 
-before_install
+before_install:
 - chmod +x gradlew
