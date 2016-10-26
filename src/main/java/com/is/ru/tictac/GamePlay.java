@@ -49,12 +49,17 @@ public class GamePlay {
 	// computer move
     }
     
-    public void playedMove(int player, int row, int col) // remember to change to private after tests
+    private void playedMove(int player, int row, int col) 
     {
 	board.markCellPlayed(player, row, col);
     }
     
-    public boolean isMoveLegal(int x, int y) // remember to change to private after tests
+    public boolean checkForWin(int player)
+    {
+	return true;
+    }
+    
+    private boolean isMoveLegal(int x, int y)
     {
 	if(x >= 0 && x <= 2 && y >= 0 && y <= 2)
 	{
@@ -64,5 +69,10 @@ public class GamePlay {
 	{
 	    return false;
 	}
+    }
+    
+    public void testFunctionForCheckForWin(int player, int row, int col)
+    {
+	playedMove(player, row, col);
     }
 }
