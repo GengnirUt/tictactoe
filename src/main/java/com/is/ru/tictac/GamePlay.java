@@ -37,6 +37,7 @@ public class GamePlay {
 	    {
 		// tell player that inputIsTakenOrIllegal
 		// ask the player to give input again
+
 		x = 1;
 	        y = 1;
 	    }	
@@ -56,17 +57,29 @@ public class GamePlay {
     
     public boolean checkForWin(int player)
     {
-	return checkForWinner(player);
+	if(checkForWinnerHorizontal(player))
+	{
+	     return true;
+	}
+	return false;
     }
     
-    private boolean checkForWinner(int player)
+    private boolean checkForWinnerHorizontal(int player)
     {
 	if(player == board.getPlayerAtRowCol(0, 0) && player == board.getPlayerAtRowCol(0, 1) && player == board.getPlayerAtRowCol(0, 2))
 	{
-	    return true;
+	    return true; // first row
 	}
+	else if(player == board.getPlayerAtRowCol(1, 0) && player == board.getPlayerAtRowCol(1, 1) && player == board.getPlayerAtRowCol(1, 2))
+	{
+	    return true; // second row
+	}
+	else if(player == board.getPlayerAtRowCol(2, 0) && player == board.getPlayerAtRowCol(2, 1) && player == board.getPlayerAtRowCol(2, 2))
+        {
+            return true; // third row
+        }
 	return false;
-	//else if(player = board.getPlayerAtRowCol(0, 0) && (player = board.getPlayerAtRowCol(0, 1) && (player = board.getPlayerAtRowCol(0, 2))
+
     }
     public boolean isThisMoveLegalTestFunction(int row, int col)
     {
