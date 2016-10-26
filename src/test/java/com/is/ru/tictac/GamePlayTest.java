@@ -8,28 +8,28 @@ import org.junit.Test;
 
 public class GamePlayTest {
     
-    /*-----These functions are now private functions-------
+  
     @Test
-    public void ssMoveLegalTestReturnsTrue() 
+    public void isMoveLegalTestReturnsTrue() 
     {
 	GamePlay game = new GamePlay();
-	assertTrue("this is legal move", game.isMoveLegal(1, 1));
+	assertTrue("this is legal move", game.isThisMoveLegalTestFunction(1, 1));
     }
     
     @Test
     public void isMoveLegalTestReturnsFalse_1()
     {
 	GamePlay game = new GamePlay();
-	assertFalse("this is not legal move", game.isMoveLegal(3, -1));
+	assertFalse("this is not legal move", game.isThisMoveLegalTestFunction(3, -1));
     }
     
     @Test
     public void isMoveLegalTestReturnsFalse_2()
     {
 	GamePlay game = new GamePlay();
-	assertFalse("this is not legal move", game.isMoveLegal(2, 3));
+	assertFalse("this is not legal move", game.isThisMoveLegalTestFunction(2, 3));
     }
-    */
+    
     
     @Test
     public void humanPlayerMoveTestReturnsFalse_1()
