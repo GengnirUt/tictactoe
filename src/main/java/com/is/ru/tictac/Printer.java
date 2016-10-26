@@ -13,4 +13,10 @@ public class Printer {
 		
 	}
 	
+	public void getPlayers(int i)
+	{
+		System.out.println("Player " + i + "!"); 
+		System.out.print("Enter zero (0) if you are human and one (1) if you are computer: "); 
+	}
+	
 }

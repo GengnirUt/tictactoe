@@ -33,4 +33,17 @@ public class PrinterTest {
 		String expectedOutput = "Hello I want to play a game\nTIC TAC TOE\n";
 		assertEquals(expectedOutput, outData.toString());
     }
+	
+	@Test
+    public void testGetPlayers() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.getPlayers(1);
+		String expectedOutput = "Player 1!\n";
+		expectedOutput += "Enter zero (0) if you are human and one (1) if you are computer: ";
+		assertEquals(expectedOutput, outData.toString());
+    }
 }
