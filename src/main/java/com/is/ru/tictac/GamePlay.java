@@ -59,9 +59,13 @@ public class GamePlay {
 	return true;
     }
     
-    private boolean isMoveLegal(int x, int y)
+    public boolean isThisMoveLegalTestFunction(int row, int col)
     {
-	if(x >= 0 && x <= 2 && y >= 0 && y <= 2)
+	return isMoveLegal(row, col);
+    }
+    private boolean isMoveLegal(int row, int col)
+    {
+	if(row >= 0 && row <= 2 && col >= 0 && col <= 2)
 	{
    	    return true;
 	}
