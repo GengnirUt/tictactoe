@@ -45,9 +45,9 @@ public class GamePlay {
 	    {
 		// tell player that inputIsTakenOrIllegal
 		// ask the player to give input again
-
-		x = 1;
-	        y = 1;
+		move = input.getPlayerMove();
+		x = move[0];
+	        y = move[1];
 	    }	
 	}
     }
