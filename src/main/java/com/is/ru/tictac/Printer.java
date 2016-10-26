@@ -19,4 +19,23 @@ public class Printer {
 		System.out.print("Enter zero (0) if you are human and one (1) if you are computer: "); 
 	}
 	
+	public void printEmptyBoard()
+	{
+		firstLine();
+		secondLine();
+		firstLine();
+		secondLine();
+		firstLine();
+	}
+	
+	private void firstLine()
+	{
+		System.out.println("     " + "|" + "     " + "|" + "     ");
+	}
+	
+	private void secondLine()
+	{
+		System.out.println("-----" + "+" + "-----" + "+" + "-----");
+	}
+	
 }

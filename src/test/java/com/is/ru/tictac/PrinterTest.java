@@ -46,4 +46,20 @@ public class PrinterTest {
 		expectedOutput += "Enter zero (0) if you are human and one (1) if you are computer: ";
 		assertEquals(expectedOutput, outData.toString());
     }
+	
+	@Test
+    public void testPrintEmptyBoard() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.printEmptyBoard();
+		String expectedOutput = "     |     |     \n";
+		for(int i = 0; i < 2; i++){
+			expectedOutput += "-----+-----+-----\n";
+			expectedOutput += "     |     |     \n";
+		}
+		assertEquals(expectedOutput, outData.toString());
+    }
 }
