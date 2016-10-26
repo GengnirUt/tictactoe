@@ -156,5 +156,34 @@ public class GamePlayTest {
         assertFalse("returns false", game.checkForWin(2)); // returns false
     }
 
+    @Test
+    public void checkForWinDiagonalReturnsTrue_1()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,0,0);
+        game.testFunctionForCheckForWin(1,1,1); 
+        game.testFunctionForCheckForWin(1,2,2); 
+        assertTrue("returns true", game.checkForWin(1)); 
+    }
+
+    @Test
+    public void checkForWinDiagonalReturnsTrue_2()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,0,0);
+        game.testFunctionForCheckForWin(1,1,1);
+        game.testFunctionForCheckForWin(1,2,2);
+        assertTrue("returns true", game.checkForWin(1));
+    }
+    
+    @Test
+    public void checkForWinDiagonalReturnsFalse_1()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,0,0);
+        game.testFunctionForCheckForWin(2,1,1);
+        game.testFunctionForCheckForWin(1,2,2);
+        assertFalse("returns false", game.checkForWin(1));
+    }
 
 }
