@@ -65,44 +65,89 @@ public class GamePlay {
 	{
 	    return true;
 	}
-	return false;
+	else if(checkForWinnerDiagonal(player))
+	{
+	    return true;
+	}
+	else
+	{
+	    return false;
+	}
     }
     
     private boolean checkForWinnerHorizontal(int player)
     {
-	if(player == board.getPlayerAtRowCol(0, 0) && player == board.getPlayerAtRowCol(0, 1) && player == board.getPlayerAtRowCol(0, 2))
+	if(player == board.getPlayerAtRowCol(0, 0) 
+            && player == board.getPlayerAtRowCol(0, 1) 
+            && player == board.getPlayerAtRowCol(0, 2))
 	{
 	    return true; // first row
 	}
-	else if(player == board.getPlayerAtRowCol(1, 0) && player == board.getPlayerAtRowCol(1, 1) && player == board.getPlayerAtRowCol(1, 2))
+	else if(player == board.getPlayerAtRowCol(1, 0) 
+                 && player == board.getPlayerAtRowCol(1, 1) 
+                 && player == board.getPlayerAtRowCol(1, 2))
 	{
 	    return true; // second row
 	}
-	else if(player == board.getPlayerAtRowCol(2, 0) && player == board.getPlayerAtRowCol(2, 1) && player == board.getPlayerAtRowCol(2, 2))
+	else if(player == board.getPlayerAtRowCol(2, 0) 
+                 && player == board.getPlayerAtRowCol(2, 1) 
+                 && player == board.getPlayerAtRowCol(2, 2))
         {
             return true; // third row
         }
-	return false;
-
+	else
+	{
+	    return false;
+	}
     }
 
     private boolean checkForWinnerVertical(int player)
     {
-        if(player == board.getPlayerAtRowCol(0, 0) && player == board.getPlayerAtRowCol(1, 0) && player == board.getPlayerAtRowCol(2, 0))
+        if(player == board.getPlayerAtRowCol(0, 0) 
+            && player == board.getPlayerAtRowCol(1, 0) 
+            && player == board.getPlayerAtRowCol(2, 0))
         {
             return true; // first row
         }
-        else if(player == board.getPlayerAtRowCol(0, 1) && player == board.getPlayerAtRowCol(1, 1) && player == board.getPlayerAtRowCol(2, 1))
+        else if(player == board.getPlayerAtRowCol(0, 1) 
+	         && player == board.getPlayerAtRowCol(1, 1) 
+                 && player == board.getPlayerAtRowCol(2, 1))
         {
             return true; // second row
         }
-        else if(player == board.getPlayerAtRowCol(0, 2) && player == board.getPlayerAtRowCol(1, 2) && player == board.getPlayerAtRowCol(2, 2))
+        else if(player == board.getPlayerAtRowCol(0, 2) 
+                 && player == board.getPlayerAtRowCol(1, 2) 
+                 && player == board.getPlayerAtRowCol(2, 2))
         {
             return true; // third row
         }
-        return false;
+	else
+	{
+            return false;
+	}
     }
+    
+    private boolean checkForWinnerDiagonal(int player)
+    {
+	
+        if(player == board.getPlayerAtRowCol(0, 0)
+            && player == board.getPlayerAtRowCol(1, 1)
+            && player == board.getPlayerAtRowCol(2, 2))
 
+	{
+	    return true;
+	}
+	else if (player == board.getPlayerAtRowCol(0, 2)
+            && player == board.getPlayerAtRowCol(1, 1)
+            && player == board.getPlayerAtRowCol(2, 0))
+	{
+	    return true;
+	}
+    	else
+	{
+	    return false;
+	}
+    }
     public boolean isThisMoveLegalTestFunction(int row, int col)
     {
 	return isMoveLegal(row, col);
