@@ -67,7 +67,6 @@ public class GamePlayTest {
 	
     }    
     
-    
     @Test
     public void checkForWinFirstRow()
     {
@@ -76,7 +75,6 @@ public class GamePlayTest {
 	game.testFunctionForCheckForWin(1,0,1); // player 1
 	game.testFunctionForCheckForWin(1,0,2); // player 1 first row win!
         assertTrue("returns true", game.checkForWin(1));
-
     }
     @Test
     public void checkForWinSecondRow()
@@ -86,8 +84,8 @@ public class GamePlayTest {
         game.testFunctionForCheckForWin(1,1,1); // player 1
         game.testFunctionForCheckForWin(1,1,2); // player 1 first row win!
         assertTrue("returns true", game.checkForWin(1));
-
     }
+
     @Test
     public void checkForWinThirdRow()
     {
@@ -96,20 +94,67 @@ public class GamePlayTest {
         game.testFunctionForCheckForWin(2,2,1); // player 2
         game.testFunctionForCheckForWin(2,2,2); // player 2 third row win!
         assertTrue("returns true", game.checkForWin(2));
-
     }
     
     @Test
     public void checkForWinThirdRowReturnsFalse()
     {
         GamePlay game = new GamePlay();
-        game.testFunctionForCheckForWin(1,2,0); // player 2
-        game.testFunctionForCheckForWin(1,2,1); // player 2
-        game.testFunctionForCheckForWin(1,1,2); // player 2 third row should fail!
+        game.testFunctionForCheckForWin(1,2,0); // player 1
+        game.testFunctionForCheckForWin(1,2,1); // player 1
+        game.testFunctionForCheckForWin(1,1,2); // player 1 third row should fail!
         assertFalse("returns false", game.checkForWin(1));
-
     }
 
+    @Test
+    public void checkForWinFirstColReturnsTrue()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,0,0); // player 1
+        game.testFunctionForCheckForWin(1,0,1); // player 1
+        game.testFunctionForCheckForWin(1,0,2); // player 1 
+        assertTrue("returns true", game.checkForWin(1));
+    }
+
+    @Test
+    public void checkForWinSecondColReturnsTrue()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,1,0); // player 1
+        game.testFunctionForCheckForWin(1,1,1); // player 1
+        game.testFunctionForCheckForWin(1,1,2); // player 1
+        assertTrue("returns true", game.checkForWin(1));
+    }
+    
+    @Test
+    public void checkForWinSecondColReturnsFalse()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,1,0); // player 2
+        game.testFunctionForCheckForWin(1,1,1); // player 2
+        game.testFunctionForCheckForWin(1,1,2); // player 2
+        assertFalse("returns false", game.checkForWin(2)); // wrong player, player 1 has won
+    }
+    
+    @Test
+    public void checkForWinThirdColReturnsTrue()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(2,1,0); // player 2
+        game.testFunctionForCheckForWin(2,1,1); // player 2
+        game.testFunctionForCheckForWin(2,1,2); // player 2
+        assertTrue("returns true", game.checkForWin(2));
+    }
+
+    @Test
+    public void checkForWinThirdColMixOfPlayersReturnsFalse()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(2,1,0); // player 2
+        game.testFunctionForCheckForWin(1,1,1); // player 1
+        game.testFunctionForCheckForWin(2,1,2); // player 2
+        assertFalse("returns false", game.checkForWin(2)); // returns false
+    }
 
 
 }
