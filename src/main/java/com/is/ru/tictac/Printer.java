@@ -38,4 +38,9 @@ public class Printer {
 		System.out.println("-----" + "+" + "-----" + "+" + "-----");
 	}
 	
+	public void playerMove()
+	{
+		System.out.println("Your move: ");
+	}
+	
 }

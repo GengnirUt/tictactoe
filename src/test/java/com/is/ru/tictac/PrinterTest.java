@@ -62,4 +62,15 @@ public class PrinterTest {
 		}
 		assertEquals(expectedOutput, outData.toString());
     }
+	
+	@Test
+    public void testPlayerMove() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.playerMove();
+		assertEquals("Your move: \n", outData.toString());
+    }
 }
