@@ -69,7 +69,7 @@ public class GamePlayTest {
     
     
     @Test
-    public void checkForWinFirstRow_1()
+    public void checkForWinFirstRow()
     {
         GamePlay game = new GamePlay();
 	game.testFunctionForCheckForWin(1,0,0); // player 1
@@ -78,7 +78,38 @@ public class GamePlayTest {
         assertTrue("returns true", game.checkForWin(1));
 
     }
+    @Test
+    public void checkForWinSecondRow()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,1,0); // player 1
+        game.testFunctionForCheckForWin(1,1,1); // player 1
+        game.testFunctionForCheckForWin(1,1,2); // player 1 first row win!
+        assertTrue("returns true", game.checkForWin(1));
+
+    }
+    @Test
+    public void checkForWinThirdRow()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(2,2,0); // player 2
+        game.testFunctionForCheckForWin(2,2,1); // player 2
+        game.testFunctionForCheckForWin(2,2,2); // player 2 third row win!
+        assertTrue("returns true", game.checkForWin(2));
+
+    }
     
+    @Test
+    public void checkForWinThirdRowReturnsFalse()
+    {
+        GamePlay game = new GamePlay();
+        game.testFunctionForCheckForWin(1,2,0); // player 2
+        game.testFunctionForCheckForWin(1,2,1); // player 2
+        game.testFunctionForCheckForWin(1,1,2); // player 2 third row should fail!
+        assertFalse("returns false", game.checkForWin(1));
+
+    }
+
 
 
 }
