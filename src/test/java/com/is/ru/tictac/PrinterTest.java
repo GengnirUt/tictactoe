@@ -21,4 +21,16 @@ public class PrinterTest {
 		printer.greet();
 		assertEquals("Welcome to Tic-tac-toe!\n", outData.toString());
     }
+	
+	@Test
+    public void testPrintIntro() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.printIntro();
+		String expectedOutput = "Hello I want to play a game\nTIC TAC TOE\n";
+		assertEquals(expectedOutput, outData.toString());
+    }
 }
