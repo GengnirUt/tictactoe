@@ -60,22 +60,25 @@ public class GamePlayTest {
     
     
     @Test
-    public void checkForWinTestTrue()
+    public void checkForWinTestReturnsFalse()
     {
 	GamePlay game = new GamePlay();
-        assertTrue("returns true", game.checkForWin(1));
+        assertFalse("returns false", game.checkForWin(1));
 	
     }    
     
-    /*
+    
     @Test
-    public void checkForWinTestTrue()
+    public void checkForWinFirstRow_1()
     {
         GamePlay game = new GamePlay();
-        assert("returns true", game.checkForWin(1));
+	game.testFunctionForCheckForWin(1,0,0); // player 1
+	game.testFunctionForCheckForWin(1,0,1); // player 1
+	game.testFunctionForCheckForWin(1,0,2); // player 1 first row win!
+        assertTrue("returns true", game.checkForWin(1));
 
     }
-    */
+    
 
 
 }
