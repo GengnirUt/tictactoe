@@ -73,4 +73,15 @@ public class PrinterTest {
 		printer.playerMove();
 		assertEquals("Your move: \n", outData.toString());
     }
+	
+	@Test
+    public void testSpotTakenOrIllegal() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.spotTakenOrIllegal();
+		assertEquals("The spot is taken or not legal\n", outData.toString());
+    }
 }

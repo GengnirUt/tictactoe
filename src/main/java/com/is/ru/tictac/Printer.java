@@ -43,4 +43,9 @@ public class Printer {
 		System.out.println("Your move: ");
 	}
 	
+	public void spotTakenOrIllegal()
+	{
+		System.out.println("The spot is taken or not legal");
+	}
+	
 }
