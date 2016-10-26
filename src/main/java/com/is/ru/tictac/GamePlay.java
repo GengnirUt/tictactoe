@@ -61,6 +61,10 @@ public class GamePlay {
 	{
 	     return true;
 	}
+	else if(checkForWinnerVertical(player))
+	{
+	    return true;
+	}
 	return false;
     }
     
@@ -81,10 +85,29 @@ public class GamePlay {
 	return false;
 
     }
+
+    private boolean checkForWinnerVertical(int player)
+    {
+        if(player == board.getPlayerAtRowCol(0, 0) && player == board.getPlayerAtRowCol(1, 0) && player == board.getPlayerAtRowCol(2, 0))
+        {
+            return true; // first row
+        }
+        else if(player == board.getPlayerAtRowCol(0, 1) && player == board.getPlayerAtRowCol(1, 1) && player == board.getPlayerAtRowCol(2, 1))
+        {
+            return true; // second row
+        }
+        else if(player == board.getPlayerAtRowCol(0, 2) && player == board.getPlayerAtRowCol(1, 2) && player == board.getPlayerAtRowCol(2, 2))
+        {
+            return true; // third row
+        }
+        return false;
+    }
+
     public boolean isThisMoveLegalTestFunction(int row, int col)
     {
 	return isMoveLegal(row, col);
     }
+
     private boolean isMoveLegal(int row, int col)
     {
 	if(row >= 0 && row <= 2 && col >= 0 && col <= 2)
