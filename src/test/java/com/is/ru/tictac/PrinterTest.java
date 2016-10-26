@@ -6,10 +6,6 @@ import java.io.PrintStream;
 import org.junit.Test;
 
 public class PrinterTest {
-	
-	public static void main(String args[]) {
-		org.junit.runner.JUnitCore.main("com.is.ru.tictac.PrinterTest");
-    }
     
     @Test
     public void testGreet() {
