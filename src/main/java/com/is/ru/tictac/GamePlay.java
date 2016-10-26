@@ -56,9 +56,18 @@ public class GamePlay {
     
     public boolean checkForWin(int player)
     {
-	return true;
+	return checkForWinner(player);
     }
     
+    private boolean checkForWinner(int player)
+    {
+	if(player == board.getPlayerAtRowCol(0, 0) && player == board.getPlayerAtRowCol(0, 1) && player == board.getPlayerAtRowCol(0, 2))
+	{
+	    return true;
+	}
+	return false;
+	//else if(player = board.getPlayerAtRowCol(0, 0) && (player = board.getPlayerAtRowCol(0, 1) && (player = board.getPlayerAtRowCol(0, 2))
+    }
     public boolean isThisMoveLegalTestFunction(int row, int col)
     {
 	return isMoveLegal(row, col);
@@ -79,4 +88,6 @@ public class GamePlay {
     {
 	playedMove(player, row, col);
     }
+
+    
 }
