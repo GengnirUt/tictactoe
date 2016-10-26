@@ -3,10 +3,11 @@ package com.is.ru.tictac;
 public class GamePlay {
     
     Board board;
-    
+    Input input;
     public GamePlay()
     {
-	board = new Board(); 
+	board = new Board();
+        input = new Input(); 
     }
     
     public void playerMove(int player, int humanOrComputer) 
@@ -20,12 +21,19 @@ public class GamePlay {
 	    computerMove(player);
 	}
     }
-
+    
+    public void getPlay()
+    {
+	int[] arr = input.getPlayerMove();
+	System.out.println("array 0: " + arr[0]);
+	System.out.println("array 1: " + arr[1]);
+    }
     private void humanMove(int player)
     {
 	// get human input
-	int x = 0;
-	int y = 0;
+	int[] move = input.getPlayerMove();	
+	int x = move[0];
+	int y = move[1];
 	while(true)
 	{
 	    if(isMoveLegal(x, y) && board.isCellEmpty(x, y))
