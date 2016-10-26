@@ -1,6 +1,8 @@
 package com.is.ru.tictac;
 
 import static org.junit.Assert.assertEquals;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.Test;
 
 public class PrinterTest {
@@ -10,8 +12,13 @@ public class PrinterTest {
     }
     
     @Test
-    public void printerTestResultsInHello() {
-        Printer print = new Printer();
-		assertEquals("Welcome to Tic-tac-toe!", print.greet());
+    public void testGreet() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.greet();
+		assertEquals("Welcome to Tic-tac-toe!\n", outData.toString());
     }
 }

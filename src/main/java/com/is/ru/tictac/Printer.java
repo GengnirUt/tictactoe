@@ -2,8 +2,8 @@ package com.is.ru.tictac;
 
 public class Printer {
 	
-	public String greet() {
-	    return "Welcome to Tic-tac-toe!";
+	public void greet() {
+	    System.out.println("Welcome to Tic-tac-toe!");
 	}
 	
 }
