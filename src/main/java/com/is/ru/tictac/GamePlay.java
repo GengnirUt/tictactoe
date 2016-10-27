@@ -22,9 +22,8 @@ public class GamePlay {
 	{
 	    computerMove(player);
 	}
-	System.out.println("player " + player + " moved ");
-	//print.printPlayer(player);
-	//print.printBoard(board);
+
+	print.printBoard(board);
     }
     
     private void humanMove(int player)
