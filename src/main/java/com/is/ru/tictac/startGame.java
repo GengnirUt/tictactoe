@@ -22,7 +22,7 @@ public class startGame {
 	    if(playerOneHumanOrComputer == 0)
 	    {
 		System.out.println("Player 1: ");
-		game.print.playerMove();
+		game.print.playerMove(player_1);
 		game.playerMove(player_1, playerOneHumanOrComputer); 
 	    }
 	    else
@@ -40,7 +40,7 @@ public class startGame {
 	    if(playerOneHumanOrComputer == 0)
             {
                 System.out.println("Player 2: ");
-                game.print.playerMove();
+                game.print.playerMove(player_2);
                 game.playerMove(player_1, playerOneHumanOrComputer);
             }
             else
