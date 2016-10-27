@@ -25,6 +25,10 @@ public class Board{
         if(isCellEmpty(row, col))
            board[row][col] = player;
     }
-
+    
+    public int getPlayerAtRowCol(int row, int col)
+    {
+    	return board[row][col];
+    }
 }
 

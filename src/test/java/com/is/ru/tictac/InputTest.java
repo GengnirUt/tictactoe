@@ -7,24 +7,24 @@ import java.io.ByteArrayInputStream;
 
 public class InputTest {
 	
-	public static void main(String args[]) {
-		org.junit.runner.JUnitCore.main("com.is.ru.tictac.InputTest");
-    }
+//	public static void main(String args[]) {
+//		org.junit.runner.JUnitCore.main("com.is.ru.tictac.InputTest");
+//    }
 
 	@Test
 	public void testGetPlayerMode() {
-		String inputData = "0";
-		System.setIn(new ByteArrayInputStream(inputData.getBytes()));
-		
-		assertEquals(0, Input.getPlayerMode());
+	    String inputData = "0";
+            Input input = new Input();
+            System.setIn(new ByteArrayInputStream(inputData.getBytes()));	
+	    assertEquals(0, input.getPlayerMode());
 	}
 	
 	@Test
-    public void testGetPlayerMove() {
-		String inputData = "1 2";
-		System.setIn(new ByteArrayInputStream(inputData.getBytes()));
-		
-		assertArrayEquals(new int[]{1,2}, Input.getPlayerMove());
+        public void testGetPlayerMove() {
+	    String inputData = "1 2";
+	    Input input = new Input();
+	    System.setIn(new ByteArrayInputStream(inputData.getBytes()));
+	    assertArrayEquals(new int[]{1,2}, input.getPlayerMove());
     }
 
 }
