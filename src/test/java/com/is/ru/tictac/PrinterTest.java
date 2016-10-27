@@ -96,4 +96,15 @@ public class PrinterTest {
 		}
 		assertEquals(expectedOutput, outData.toString());
     }
+	
+	@Test
+    public void testWinner() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.winner(2);
+		assertEquals("Player 2 won!\n", outData.toString());
+    }
 }

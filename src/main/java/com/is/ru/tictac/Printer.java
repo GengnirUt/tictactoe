@@ -34,11 +34,11 @@ public class Printer {
 		{
 			for(int y = 0; y < 3; y++)
 			{
-				if(gameBoard.getPlayerAtRowCol(x,y) == 0) // X for player 1
+				if(gameBoard.getPlayerAtRowCol(x,y) == 1) // X for player 1
 				{
 					System.out.print("  X  ");
 				}
-				else if(gameBoard.getPlayerAtRowCol(x,y) == 1) // O for player 2
+				else if(gameBoard.getPlayerAtRowCol(x,y) == 2) // O for player 2
 				{
 					System.out.print("  O  ");
 				}
@@ -55,7 +55,7 @@ public class Printer {
 			System.out.println();
 			if(x != 2)
 			{
-				secondLine();
+				System.out.println("-----" + "+" + "-----" + "+" + "-----");
 			}
 		}
 	}
@@ -78,6 +78,11 @@ public class Printer {
 	public void spotTakenOrIllegal()
 	{
 		System.out.println("The spot is taken or not legal");
+	}
+	
+	public void winner(int number)
+	{
+		System.out.println("Player " + number + " won!");
 	}
 	
 }
