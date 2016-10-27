@@ -28,6 +28,38 @@ public class Printer {
 		firstLine();
 	}
 	
+	public void printBoard(Board gameBoard)
+	{
+		for(int x = 0; x < 3; x++)
+		{
+			for(int y = 0; y < 3; y++)
+			{
+				if(gameBoard.getPlayerAtRowCol(x,y) == 1) // X for player 1
+				{
+					System.out.print("  X  ");
+				}
+				else if(gameBoard.getPlayerAtRowCol(x,y) == 2) // O for player 2
+				{
+					System.out.print("  O  ");
+				}
+				else // empty for free spot
+				{
+					System.out.print("     ");
+				}
+				if(y != 2)
+				{
+					System.out.print("|");
+				}
+				
+			}
+			System.out.println();
+			if(x != 2)
+			{
+				System.out.println("-----" + "+" + "-----" + "+" + "-----");
+			}
+		}
+	}
+	
 	private void firstLine()
 	{
 		System.out.println("     " + "|" + "     " + "|" + "     ");
@@ -38,14 +70,19 @@ public class Printer {
 		System.out.println("-----" + "+" + "-----" + "+" + "-----");
 	}
 	
-	public void playerMove()
+	public void playerMove(int number)
 	{
-		System.out.println("Your move: ");
+		System.out.println("Player " + number + " move:");
 	}
 	
 	public void spotTakenOrIllegal()
 	{
 		System.out.println("The spot is taken or not legal");
+	}
+	
+	public void winner(int number)
+	{
+		System.out.println("Player " + number + " won!");
 	}
 	
 }
