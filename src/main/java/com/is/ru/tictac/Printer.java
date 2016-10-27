@@ -28,6 +28,38 @@ public class Printer {
 		firstLine();
 	}
 	
+	public void printBoard(Board gameBoard)
+	{
+		for(int x = 0; x < 3; x++)
+		{
+			for(int y = 0; y < 3; y++)
+			{
+				if(gameBoard.getPlayerAtRowCol(x,y) == 0) // X for player 1
+				{
+					System.out.print("  X  ");
+				}
+				else if(gameBoard.getPlayerAtRowCol(x,y) == 1) // O for player 2
+				{
+					System.out.print("  O  ");
+				}
+				else // empty for free spot
+				{
+					System.out.print("     ");
+				}
+				if(y != 2)
+				{
+					System.out.print("|");
+				}
+				
+			}
+			System.out.println();
+			if(x != 2)
+			{
+				secondLine();
+			}
+		}
+	}
+	
 	private void firstLine()
 	{
 		System.out.println("     " + "|" + "     " + "|" + "     ");

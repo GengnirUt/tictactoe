@@ -80,4 +80,20 @@ public class PrinterTest {
 		printer.spotTakenOrIllegal();
 		assertEquals("The spot is taken or not legal\n", outData.toString());
     }
+	
+	@Test
+    public void testPrintBoard() {
+        Printer printer = new Printer();
+		
+		ByteArrayOutputStream outData = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outData));
+		
+		printer.printBoard(new Board());
+		String expectedOutput = "     |     |     \n";
+		for(int i = 0; i < 2; i++){
+			expectedOutput += "-----+-----+-----\n";
+			expectedOutput += "     |     |     \n";
+		}
+		assertEquals(expectedOutput, outData.toString());
+    }
 }
