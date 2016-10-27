@@ -19,39 +19,35 @@ public class startGame {
 	
 	for(int i = 0; i < maxTurns; i++)
 	{
+	    game.print.playerMove(player_1);
 	    if(playerOneHumanOrComputer == 0)
 	    {
-		System.out.println("Player 1: ");
-		game.print.playerMove(player_1);
 		game.playerMove(player_1, playerOneHumanOrComputer); 
 	    }
 	    else
 	    {
-
-		System.out.println("Player 1: ");
-		System.out.println("computer make a move");
-		game.playerMove(player_2, playerOneHumanOrComputer);
+		game.playerMove(player_1, playerOneHumanOrComputer);
 	    }
+
 	    if(game.checkForWin(player_1))
 	    {   
-		System.out.println("player 1 has won"); 
+		game.print.winner(player_1);
 		break;
 	    }
+	    
+	    game.print.playerMove(player_2);
 	    if(playerOneHumanOrComputer == 0)
             {
-                System.out.println("Player 2: ");
-                game.print.playerMove(player_2);
-                game.playerMove(player_1, playerOneHumanOrComputer);
-            }
-            else
-            {
-                System.out.println("Player 2: ");
-                System.out.println("computer make a move");
                 game.playerMove(player_2, playerOneHumanOrComputer);
             }
+            else
+            {   
+                game.playerMove(player_2, playerOneHumanOrComputer);
+            }
+
 	    if(game.checkForWin(player_2))
 	    {
-		System.out.println("player 2 has won");
+		game.print.winner(player_2);
 		break;
 	    }
 	}
