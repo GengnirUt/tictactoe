@@ -134,5 +134,19 @@ public class Database{
         }
     }
 
+    public int selectPlayerHasWon(int playerID){
+	String sql = "SELECT count(gid) AS wins FROM gameinfo WHERE gid = ?";
+
+	try (Connection conn = databaseConnect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            	pstmt.setDouble(1, playerID);	
+		return pstmt.executeQuery().getInt("wins");
+            
+	    } catch (SQLException e) {
+            System.out.println(e.getMessage());
+	    return -1;
+        }
+    }
+
 
 }
