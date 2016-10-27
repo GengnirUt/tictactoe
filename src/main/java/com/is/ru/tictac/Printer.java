@@ -79,14 +79,10 @@ public class Printer {
 	{
 		System.out.println("The spot is taken or not legal");
 	}
-	
-<<<<<<< HEAD
-}
-=======
+
 	public void winner(int number)
 	{
 		System.out.println("Player " + number + " won!");
 	}
 	
 }
->>>>>>> master

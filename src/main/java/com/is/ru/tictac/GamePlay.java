@@ -43,7 +43,7 @@ public class GamePlay {
 	    else
 	    {
 		print.spotTakenOrIllegal();
-		print.playerMove();
+		print.playerMove(player);
 		move = input.getPlayerMove();
 		row = move[0];
 	        col = move[1];
