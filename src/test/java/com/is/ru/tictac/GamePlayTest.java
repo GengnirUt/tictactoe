@@ -50,17 +50,33 @@ public class GamePlayTest {
     
     */
 
-    /*    
+        
     @Test
     public void computerPlayerMoveTestReturnsFalse_1()
     {
         GamePlay game = new GamePlay();
-        game.playerMove(1, 0); // player 1 and 0 for human player
+        game.playerMove(1, 1); // player 1 and 1 for computer
         assertFalse(game.board.isCellEmpty(0, 0));
     }
-    */
     
+    @Test
+    public void computerPlayerMoveTestReturnsTrue_1()
+    {
+        GamePlay game = new GamePlay();
+        game.playerMove(1, 1); // player 1 and 1 for computer
+        assertTrue(game.board.isCellEmpty(1, 1));
+    }
     
+
+    @Test
+    public void computerPlayerMoveTestReturnsFalse_2()
+    {
+        GamePlay game = new GamePlay();
+        game.playerMove(1, 1); // player 1 and 1 for computer
+	game.playerMove(1, 1); // player 1 and 1 for computer
+        assertFalse(game.board.isCellEmpty(0, 1));
+    }
+
     @Test
     public void checkForWinTestReturnsFalse()
     {

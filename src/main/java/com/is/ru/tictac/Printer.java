@@ -79,7 +79,7 @@ public class Printer {
 	{
 		System.out.println("The spot is taken or not legal");
 	}
-	
+
 	public void winner(int number)
 	{
 		System.out.println("Player " + number + " won!");

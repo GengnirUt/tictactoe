@@ -4,10 +4,12 @@ public class GamePlay {
     
     Board board;
     Input input;
+    Printer print;
     public GamePlay()
     {
 	board = new Board();
-        input = new Input(); 
+        input = new Input();
+	print = new Printer(); 
     }
     
     public void playerMove(int player, int humanOrComputer) 
@@ -20,42 +22,53 @@ public class GamePlay {
 	{
 	    computerMove(player);
 	}
+
+	print.printBoard(board);
     }
     
-    public void getPlay()
-    {
-	int[] arr = input.getPlayerMove();
-	System.out.println("array 0: " + arr[0]);
-	System.out.println("array 1: " + arr[1]);
-    }
     private void humanMove(int player)
     {
 	// get human input
 	int[] move = input.getPlayerMove();	
-	int x = move[0];
-	int y = move[1];
+	int row = move[0];
+	int col = move[1];
 	while(true)
 	{
-	    if(isMoveLegal(x, y) && board.isCellEmpty(x, y))
+	    if(isMoveLegal(row, col) && board.isCellEmpty(row, col))
 	    {
-		playedMove(player, x, y);
+		playedMove(player, row, col);
 		break;
 	    }
 	    else
 	    {
-		// tell player that inputIsTakenOrIllegal
-		// ask the player to give input again
+		print.spotTakenOrIllegal();
+		print.playerMove(player);
 		move = input.getPlayerMove();
-		x = move[0];
-	        y = move[1];
+		row = move[0];
+	        col = move[1];
 	    }	
 	}
     }
-    
-    
+        
     public void computerMove(int player)
     {
-	// computer move
+	boolean exit = false;
+	for(int row = 0; row < 3; row++)
+	{
+	    if(exit)
+	    {
+		break;
+	    }
+	    for(int col = 0; col < 3; col++)
+	    {
+		if(board.isCellEmpty(row, col))
+		{
+		    playedMove(player, row, col);
+		    exit = true;
+		    break;
+		}
+	    }
+	}	
     }
     
     private void playedMove(int player, int row, int col) 
