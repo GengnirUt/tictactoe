@@ -66,8 +66,8 @@ public class PrinterTest {
 		ByteArrayOutputStream outData = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outData));
 		
-		printer.playerMove();
-		assertEquals("Your move: \n", outData.toString());
+		printer.playerMove(1);
+		assertEquals("Player 1 move:\n", outData.toString());
     }
 	
 	@Test

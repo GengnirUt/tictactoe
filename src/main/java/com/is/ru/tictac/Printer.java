@@ -70,9 +70,9 @@ public class Printer {
 		System.out.println("-----" + "+" + "-----" + "+" + "-----");
 	}
 	
-	public void playerMove()
+	public void playerMove(int number)
 	{
-		System.out.println("Your move: ");
+		System.out.println("Player " + number + " move:");
 	}
 	
 	public void spotTakenOrIllegal()
