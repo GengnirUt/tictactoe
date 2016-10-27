@@ -4,10 +4,12 @@ public class GamePlay {
     
     Board board;
     Input input;
+    Printer print;
     public GamePlay()
     {
 	board = new Board();
-        input = new Input(); 
+        input = new Input();
+	print = new Printer(); 
     }
     
     public void playerMove(int player, int humanOrComputer) 
@@ -20,14 +22,11 @@ public class GamePlay {
 	{
 	    computerMove(player);
 	}
+	System.out.println("player " + player + " moved ");
+	//print.printPlayer(player);
+	//print.printBoard(board);
     }
     
-    public void getPlay()
-    {
-	int[] arr = input.getPlayerMove();
-	System.out.println("array 0: " + arr[0]);
-	System.out.println("array 1: " + arr[1]);
-    }
     private void humanMove(int player)
     {
 	// get human input
@@ -43,19 +42,18 @@ public class GamePlay {
 	    }
 	    else
 	    {
-		// tell player that inputIsTakenOrIllegal
-		// ask the player to give input again
+		print.spotTakenOrIllegal();
+		print.playerMove();
 		move = input.getPlayerMove();
 		x = move[0];
 	        y = move[1];
 	    }	
 	}
     }
-    
-    
+        
     public void computerMove(int player)
     {
-	// computer move
+	
     }
     
     private void playedMove(int player, int row, int col) 
