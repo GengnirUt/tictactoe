@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,23 @@ public class Database{
 	+ "pid INTEGER PRIMARY KEY, \n"
 	+ "name TEXT, \n"
 	+ ");";
+
+
+    public static void insertNewGame(int winner, int moves){
+	String sql = "INSERT INTO gameinfo(winnerid, moves) VALUES (?,?)";
+
+	try (Connection conn = databaseConnect();
+	     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		pstmt.setInt(1, winner);
+		pstmt.setInt(2, moves);
+		pstmt.executeUpdate();
+
+	    } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 
 
     public static void createNewDatabase(){
@@ -62,7 +80,7 @@ public class Database{
     }
 
 
-    public static void databaseConnect() {
+    public static Connection databaseConnect() {
         Connection conn = null;
 
         try {
@@ -70,19 +88,14 @@ public class Database{
             conn = DriverManager.getConnection(url);
             
             System.out.println("Connection to SQLite has been established.");
-            
+            return conn;
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+	    return null;
 
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
+
     }
 
 
@@ -98,9 +111,28 @@ public class Database{
 	    } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-	
+
+	insertIntoPlayerinfo();
     }
 
+    private static void insertIntoPlayerinfo(){
+	String p1sql = "INSERT INTO playerinfo(pid, name) VALUES (1, \"Humanoid 1\")";
+	String p2sql = "INSERT INTO playerinfo(pid, name) VALUES (1, \"Humanoid 2\")";
+	String p3sql = "INSERT INTO playerinfo(pid, name) VALUES (1, \"Computer\")";
+
+	try (Connection conn = databaseConnect();
+	     PreparedStatement pstmt1 = conn.prepareStatement(p1sql);
+	     PreparedStatement pstmt2 = conn.prepareStatement(p2sql);
+	     PreparedStatement pstmt3 = conn.prepareStatement(p3sql)) {
+
+	     pstmt1.executeUpdate();
+	     pstmt2.executeUpdate();
+	     pstmt3.executeUpdate();
+
+	    } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
 }
