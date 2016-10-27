@@ -3,6 +3,7 @@ package com.is.ru.tictac;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.sql.SQLException;
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +16,19 @@ public class Database{
     private static final String dirName = "./Data/";
     private static final String fileName = "GameInfo.db";
 
+    private static final String createGameInfo = "CREATE TABLE IF NOT EXISTS gameinfo (\n"
+	+ "gid INTEGER PRIMARY KEY,\n"
+	+ "winnerid INTEGER NOT NULL, \n"
+	+ "moves INTEGER, \n"
+	+ "FOREIGN KEY (winnerid) REFERENCES playerinfo(pid)\n"
+	+ ");";
+
+    private static final String createPlayerInfo = "CREATE TABLE IF NOT EXISTS playerinfo (\n"
+	+ "pid INTEGER PRIMARY KEY, \n"
+	+ "name TEXT, \n"
+	+ ");";
+
+
     public static void createNewDatabase(){
 	File dir = new File(dirName);
 
@@ -25,6 +39,7 @@ public class Database{
 	try(Connection conn = DriverManager.getConnection(url)){
 		if (conn != null){
 		    DatabaseMetaData meta = conn.getMetaData();
+		    createTables();
 		    System.out.println("The driver name is " + meta.getDriverName());
 		    System.out.println("A new database has been created.");
 		}
@@ -69,6 +84,23 @@ public class Database{
             }
         }
     }
+
+
+    private static void createTables(){
+	String url = "jdbc:sqlite:" + dirName + fileName;
+        
+        try (Connection conn = DriverManager.getConnection(url);
+	     Statement stmt = conn.createStatement()) {
+		
+		stmt.execute(createGameInfo);
+		stmt.execute(createPlayerInfo);
+
+	    } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+	
+    }
+
 
 
 }
