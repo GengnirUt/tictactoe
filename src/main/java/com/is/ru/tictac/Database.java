@@ -173,6 +173,7 @@ public class Database{
             return -1;
         }
     }
+
     public void selectAll(){
         String sql = "SELECT * FROM gameinfo";
 
@@ -189,6 +190,19 @@ public class Database{
 
             } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public int selectGamesInTotal(){
+        String sql = "SELECT count(gid) AS games FROM gameinfo";
+
+        try (Connection conn = databaseConnect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)){
+                return pstmt.executeQuery().getInt("games");
+
+            } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return -1;
         }
     }
 
