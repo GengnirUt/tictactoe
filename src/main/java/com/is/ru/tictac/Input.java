@@ -2,21 +2,25 @@ package com.is.ru.tictac;
 
 import java.util.Scanner;
 
+import edu.princeton.cs.algs4.StdIn;
+
 public class Input {
 	
-        public int getPlayerMode()
+        public static boolean getPlayerMode()
 	{
-	    Scanner in = new Scanner(System.in);	
-	    int mode = in.nextInt();
-	    return mode;
+        int mode = StdIn.readInt();
+        while(mode != 0 || mode != 1)
+        	mode = StdIn.readInt();
+        if(mode == 0)
+        	return false; // player is human
+        return true;
 	}
 	
-	public int[] getPlayerMove()
-	{
-	    Scanner in = new Scanner(System.in);
+	public static int[] getPlayerMove()
+	{    
 	    int[] move = new int[2];
-	    move[0] = in.nextInt(); // X move
-	    move[1] = in.nextInt(); // Y move
+	    move[0] = StdIn.readInt(); // row move
+	    move[1] = StdIn.readInt(); // col move
 	    return move;
 	}
 

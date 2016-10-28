@@ -3,55 +3,49 @@ package com.is.ru.tictac;
 public class GamePlay {
     
     Board board;
-    Input input;
-    Printer print;
-    public GamePlay()
-    {
-	board = new Board();
-        input = new Input();
-	print = new Printer(); 
+    //Input input;
+    //Printer print;
+    public GamePlay(){
+    	board = new Board();
+    	//input = new Input();
+    	//print = new Printer(); 
     }
-    
-    public void playerMove(int player, int humanOrComputer) 
-    {  
-	if(humanOrComputer == 0) // if player is human == 0
-	{
-	    humanMove(player); 
-	}
-	else	// if player is computer == 1
-	{
-	    computerMove(player);
-	}
+    /*
+    public void playerMove(int player, int humanOrComputer){  
+		if(humanOrComputer == 0) // if player is human == 0
+		{
+		    humanMove(player); 
+		}
+		else	// if player is computer == 1
+		{
+		    computerMove(player);
+		}
 
-	print.printBoard(board);
+		print.printBoard(board);
     }
-    
-    private void humanMove(int player)
-    {
+  */  
+    public void humanMove(int player){
 	// get human input
-	int[] move = input.getPlayerMove();	
-	int row = move[0];
-	int col = move[1];
-	while(true)
-	{
-	    if(isMoveLegal(row, col) && board.isCellEmpty(row, col))
-	    {
-		playedMove(player, row, col);
-		break;
-	    }
-	    else
-	    {
-		print.spotTakenOrIllegal();
-		print.playerMove(player);
-		move = input.getPlayerMove();
-		row = move[0];
-	        col = move[1];
-	    }	
-	}
+    	int[] move = Input.getPlayerMove();	
+    	int row = move[0];
+    	int col = move[1];
+    	while(true)
+		{
+		    if(isMoveLegal(row, col) && board.isCellEmpty(row, col)){
+		    	playedMove(player, row, col);
+		    	break;
+		    }
+		    else{
+		    	Printer.spotTakenOrIllegal();
+		    	Printer.playerMove(player);
+		    	move = Input.getPlayerMove();
+		    	row = move[0];
+		        col = move[1];
+		    }	
+		}
     }
         
-    public void computerMove(int player)
-    {
+    public void computerMove(int player){
     	//If computer has two in a row, play the third to win.
     	int index;
     	index = checkForTwoInARowHorizontal(player);

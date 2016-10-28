@@ -13,13 +13,13 @@ public class Printer {
 		
 	}
 	
-	public void getPlayers(int i)
+	public static void getPlayers(int i)
 	{
 		System.out.println("Player " + i + "!"); 
 		System.out.print("Enter zero (0) if you are human and one (1) if you are computer: "); 
 	}
 	
-	public void printEmptyBoard()
+	public static void printEmptyBoard()
 	{
 		firstLine();
 		secondLine();
@@ -60,27 +60,27 @@ public class Printer {
 		}
 	}
 	
-	private void firstLine()
+	private static void firstLine()
 	{
 		System.out.println("     " + "|" + "     " + "|" + "     ");
 	}
 	
-	private void secondLine()
+	private static void secondLine()
 	{
 		System.out.println("-----" + "+" + "-----" + "+" + "-----");
 	}
 	
-	public void playerMove(int number)
+	public static void playerMove(int number)
 	{
 		System.out.println("Player " + number + " move:");
 	}
 	
-	public void spotTakenOrIllegal()
+	public static void spotTakenOrIllegal()
 	{
 		System.out.println("The spot is taken or not legal");
 	}
 
-	public void winner(int number)
+	public static void winner(int number)
 	{
 		System.out.println("Player " + number + " won!");
 	}
