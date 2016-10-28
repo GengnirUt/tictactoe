@@ -60,7 +60,7 @@ public class startGameTest {
 
         startGame game = new startGame(true, true);
         game.board.markCellPlayed(1,0,0); // player 1
-        game.board.markCellPlayed(1,1,0); // player 2
+        game.board.markCellPlayed(1,1,0); // player 1
         game.board.markCellPlayed(1,2,0); // player 1
         assertTrue("returns true", game.checkForWin(1));
     }
@@ -71,7 +71,7 @@ public class startGameTest {
 
         startGame game = new startGame(true, true);
         game.board.markCellPlayed(1,0,1); // player 1
-        game.board.markCellPlayed(1,1,1); // player 2
+        game.board.markCellPlayed(1,1,1); // player 1
         game.board.markCellPlayed(1,2,1); // player 1
         assertTrue("returns true", game.checkForWin(1));
     }
@@ -94,7 +94,7 @@ public class startGameTest {
 
         startGame game = new startGame(true, true);
         game.board.markCellPlayed(1,0,0); // player 1
-        game.board.markCellPlayed(1,1,1); // player 2
+        game.board.markCellPlayed(1,1,1); // player 1
         game.board.markCellPlayed(1,2,2); // player 1
         assertTrue("returns true", game.checkForWin(1));
     }
@@ -105,9 +105,20 @@ public class startGameTest {
 
         startGame game = new startGame(true, true);
         game.board.markCellPlayed(1,0,2); // player 1
-        game.board.markCellPlayed(1,1,1); // player 2
+        game.board.markCellPlayed(1,1,1); // player 1
         game.board.markCellPlayed(1,2,0); // player 1
         assertTrue("returns true", game.checkForWin(1));
+    }
+    
+    @Test
+    public void checkForWinDiagonalReturnsFalse_1()
+    {
+
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,0,2); // player 1
+        game.board.markCellPlayed(2,1,1); // player 2
+        game.board.markCellPlayed(1,2,0); // player 1
+        assertFalse("returns false", game.checkForWin(1));
     }
 
     @Test
