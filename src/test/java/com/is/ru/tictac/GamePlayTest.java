@@ -2,6 +2,7 @@ package com.is.ru.tictac;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 
 import org.junit.Test;
@@ -176,14 +177,14 @@ public class GamePlayTest {
     @Test
     public void TestCheckForForks()
     {
-		Board board = new Board();
-    	GamePlay game = new GamePlay();
+	Board board = new Board();
+  	
     	board.markCellPlayed(1, 0, 0);
     	board.markCellPlayed(1, 2, 2);
-    	assertEquals(2, game.checkForForks(1));
-    	board.markCellPlayed(0, 0, 0);
-    	board.markCellPlayed(0, 2, 2);
-    	assertEquals(-1, game.checkForForks(1));
+    	assertEquals(2, GamePlay.checkForForks(1, board));
+    	board.markCellPlayed(2, 0, 2);
+    	board.markCellPlayed(2, 2, 0);
+    	assertEquals(-1, GamePlay.checkForForks(1, board));
     }
     /* Unnessary test - iscellempty is enough
     @Test
@@ -194,85 +195,83 @@ public class GamePlayTest {
     	game.playedMove(1, 1, 1);
     	assertEquals(-1, gameplay.checkIfCenterIsEmpty(1));
     }
-    */
+
+    //  Skil ekki alveg hvad a ad vera i naesta testi
     @Test
     public void TestCheckForOpponentInCorner()
     {
-		Board board = new Board();
-    	GamePlay game = new GamePlay();
+	Board board = new Board();
     	board.markCellPlayed(2, 0, 0);
-    	assertEquals(22, game.checkForOpponentinCorner(1, board));
-    	board.markCellPlayed(0, 0, 0);
+    	assertEquals(22, GamePlay.checkForOpponentInCorner(1, board));
+    	board.markCellPlayed(1, 2, 0);
     	
     	board.markCellPlayed(2, 0, 2);
-    	assertEquals(20, game.checkForOpponentinCorner(1, board));
-    	board.markCellPlayed(0, 0, 2);
+    	assertEquals(20, GamePlay.checkForOpponentInCorner(1, board));
+    	board.markCellPlayed(1, 0, 2);
     	
     	board.markCellPlayed(2, 2, 2);
-    	assertEquals(0, game.checkForOpponentinCorner(1, board));
-    	board.markCellPlayed(0, 2, 2);
+    	assertEquals(0, GamePlay.checkForOpponentInCorner(1, board));
+    	board.markCellPlayed(1, 2, 2);
     	
     	board.markCellPlayed(2, 2, 0);
-    	assertEquals(2, game.checkForOpponentinCorner(1, board));
+    	assertEquals(2, GamePlay.checkForOpponentInCorner(1, board));
     }
-    
+    */
     @Test
     public void TestCheckForEmptyCorner()
     {
-		Board board = new Board();
-    	GamePlay game = new GamePlay();
-    	assertEquals(0, game.checkForEmptyCorner(1));
+	Board board = new Board();
+    	assertEquals(0, GamePlay.checkForEmptyCorner(1, board));
     	board.markCellPlayed(1, 0, 0);
-    	assertEquals(2, game.checkForEmptyCorner(1));
+    	assertEquals(2, GamePlay.checkForEmptyCorner(1, board));
     	board.markCellPlayed(1, 0, 2);
-    	assertEquals(22, game.checkForEmptyCorner(1));
+    	assertEquals(22, GamePlay.checkForEmptyCorner(1, board));
     	board.markCellPlayed(1, 2, 2);
-    	assertEquals(20, game.checkForEmptyCorner(1));
+    	assertEquals(20, GamePlay.checkForEmptyCorner(1, board));
     	board.markCellPlayed(1, 2, 0);
-    	assertEquals(-1, game.checkForEmptyCorner(1));
+    	assertEquals(-1, GamePlay.checkForEmptyCorner(1, board));
     }
     
     @Test
     public void TestCheckForEmptySide()
     {
-		Board board = new Board();
-    	GamePlay game = new GamePlay();
-    	assertEquals(1, game.checkForEmptySide(1));
+	Board board = new Board();
+    	assertEquals(1, GamePlay.checkForEmptySide(1, board));
     	board.markCellPlayed(1, 0, 1);
-    	assertEquals(12, game.checkForEmptySide(1));
+    	assertEquals(12, GamePlay.checkForEmptySide(1, board));
     	board.markCellPlayed(1, 1, 2);
-    	assertEquals(21, game.checkForEmptySide(1));
+    	assertEquals(21, GamePlay.checkForEmptySide(1, board));
     	board.markCellPlayed(1, 2, 1);
-    	assertEquals(10, game.checkForEmptySide(1));
+    	assertEquals(10, GamePlay.checkForEmptySide(1, board));
     	board.markCellPlayed(1, 1, 0);
-    	assertEquals(-1, game.checkForEmptySide(1));
+    	assertEquals(-1, GamePlay.checkForEmptySide(1, board));
     }
 	
 	@Test
     public void testIndexRow(){
     	int index = 5;
-    	assertEquals(0, gameplay.indexRow(index));
+    	assertEquals(0, GamePlay.indexRow(index));
     	index = 15;
-    	assertEquals(1, gameplay.indexRow(index));
+    	assertEquals(1, GamePlay.indexRow(index));
     	index = 25;
-    	assertEquals(2, gameplay.indexRow(index));
+    	assertEquals(2, GamePlay.indexRow(index));
     }
     
     @Test
     public void testIndexCol(){
     	int index = 0;
-    	assertEquals(0, gameplay.indexRow(index));
+    	assertEquals(0, GamePlay.indexCol(index));
     	index = 10;
-    	assertEquals(0, gameplay.indexRow(index));
+    	assertEquals(0, GamePlay.indexCol(index));
     	index = 20;
-    	assertEquals(0, gameplay.indexRow(index));
+    	assertEquals(0, GamePlay.indexCol(index));
     	index = 1;
-    	assertEquals(1, gameplay.indexRow(index));
+    	assertEquals(1, GamePlay.indexCol(index));
     	index = 11;
-    	assertEquals(1, gameplay.indexRow(index));
+    	assertEquals(1, GamePlay.indexCol(index));
     	index = 21;
-    	assertEquals(1, gameplay.indexRow(index));
+    	assertEquals(1, GamePlay.indexCol(index));
     	index = 22;
-    	assertEquals(2, gameplay.indexRow(index));
+    	assertEquals(2, GamePlay.indexCol(index));
     }
 }
