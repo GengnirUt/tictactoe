@@ -1,49 +1,153 @@
 package com.is.ru.tictac;
 
 public class startGame {
-    public static void main(String[] args) {
-    	GamePlay game = new GamePlay();
-		//Input input = new Input();
-		//Printer print = new Printer();
-		int maxTurns = 9; // only 9 moves possible
-		//int player_1 = 1;
-		//int player_2 = 2;
-		//int playerOneHumanOrComputer = 0;
-		//int playerTwoHumanOrComputer = 0;
-		
-		//System.out.println("player 1 enter 0 or 1");
+	
+	Board board;
+	Player p1;
+	Player p2;
+	GamePlay cpugame;
+	
+	startGame(){
+		board = new Board();
 		Printer.getPlayers(1);
-		Player p1 = new Player(1, Input.getPlayerMode());
+		p1 = new Player(1, Input.getPlayerMode());
 		Printer.getPlayers(2);
-		Player p2 = new Player(2, Input.getPlayerMode());
+		p2 = new Player(2, Input.getPlayerMode());
 		
-		for(int i = 0; i < maxTurns; i++)
+		if(!(p1.isHuman() && p2.isHuman()))
+			cpugame = new GamePlay();
+		else
+			cpugame = null;		
+	}
+	
+	private boolean checkMove(int[] move){
+		boolean a = (board.isCellEmpty(move[0], move[1]));
+		return a;
+	}
+	
+	private boolean checkIfOnBoard( int[] move){
+		boolean a = (move[0] < board.getBoardSize() && move[0] < board.getBoardSize());
+		return a;
+	}
+		
+	public void humanMove(int player){
+		// 	get human input
+		int[] move = Input.getPlayerMove();	
+		while(!(checkIfOnBoard(move) && checkMove(move)) ){
+			Printer.spotTakenOrIllegal();
+			Printer.playerMove(player);
+			move = Input.getPlayerMove();
+	    }
+		board.markCellPlayed(player, move[0], move[1]);
+    }
+	
+	public boolean checkForWin(int player){
+    	if(checkForWinnerHorizontal(player)){
+    		return true;
+    	}
+    	else if(checkForWinnerVertical(player)){
+    		return true;
+    	}
+    	else if(checkForWinnerDiagonal(player)){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    
+    private boolean checkForWinnerHorizontal(int player){
+    	if(player == board.getPlayerAtRowCol(0, 0) 
+    			&& player == board.getPlayerAtRowCol(0, 1) 
+    			&& player == board.getPlayerAtRowCol(0, 2)){
+    		return true; // first row
+    	}
+    	else if(player == board.getPlayerAtRowCol(1, 0) 
+    			&& player == board.getPlayerAtRowCol(1, 1) 
+    			&& player == board.getPlayerAtRowCol(1, 2)){
+    		return true; // second row
+    	}
+    	else if(player == board.getPlayerAtRowCol(2, 0) 
+    			&& player == board.getPlayerAtRowCol(2, 1) 
+    			&& player == board.getPlayerAtRowCol(2, 2)){
+    		return true; // third row
+        }
+    	else{
+    		return false;
+    	}
+    }
+
+    private boolean checkForWinnerVertical(int player){
+    	if(player == board.getPlayerAtRowCol(0, 0) 
+    			&& player == board.getPlayerAtRowCol(1, 0) 
+    			&& player == board.getPlayerAtRowCol(2, 0)){
+    		return true; // first row
+    	}
+    	else if(player == board.getPlayerAtRowCol(0, 1) 
+    			&& player == board.getPlayerAtRowCol(1, 1) 
+    			&& player == board.getPlayerAtRowCol(2, 1)){
+            return true; // second row
+        }
+        else if(player == board.getPlayerAtRowCol(0, 2) 
+        		&& player == board.getPlayerAtRowCol(1, 2) 
+        		&& player == board.getPlayerAtRowCol(2, 2)){
+        	return true; // third row
+        }
+        else{
+        	return false;
+        }
+    }
+    
+    private boolean checkForWinnerDiagonal(int player){
+    	if(player == board.getPlayerAtRowCol(0, 0)
+    			&& player == board.getPlayerAtRowCol(1, 1)
+    			&& player == board.getPlayerAtRowCol(2, 2)){
+    		return true;
+    	}
+    	else if (player == board.getPlayerAtRowCol(0, 2)
+    			&& player == board.getPlayerAtRowCol(1, 1)
+    			&& player == board.getPlayerAtRowCol(2, 0)){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+	
+    public static void main(String[] args) {
+    	startGame game = new startGame();
+    	
+    	//Board board = new Board();
+		int maxTurns = 9; // only 9 moves possible
+		
+		Player next = game.p1;
+		Printer.printEmptyBoard();
+		for(int round = 0; round < maxTurns; round++)
 		{
-			Printer.playerMove(p1.getPlayerNr());
-		    if(p1.isHuman()){
-		    	game.humanMove(p1.getPlayerNr()); 
+			
+			Printer.playerMove(next.getPlayerNr());
+		    if(next.isHuman()){
+		    	
+		    	game.humanMove(next.getPlayerNr()); 
 		    }
 		    else{
-		    	game.computerMove(p1.getPlayerNr());
+		    	int[] move = game.cpugame.computerMove(next.getPlayerNr(), game.board);
+		    	game.board.markCellPlayed(next.getPlayerNr(), move[0], move[1]);
 		    }
-	
-		    if(game.checkForWin(p1.getPlayerNr())){   
-		    	Printer.winner(p1.getPlayerNr());
+		    
+		    Printer.printBoard(game.board);
+		    //	Check for a winner
+		    if(round > 3 && game.checkForWin(next.getPlayerNr())){   
+		    	Printer.winner(next.getPlayerNr());
 		    	break;
 		    }
 		    
-		    Printer.playerMove(p2.getPlayerNr());
-		    if(p2.isHuman()){
-		    	game.humanMove(p2.getPlayerNr()); 
-		    }
-		    else{   
-		    	game.computerMove(p2.getPlayerNr());
-		    }
-	
-		    if(game.checkForWin(p2.getPlayerNr())){
-		    	Printer.winner(p2.getPlayerNr());
-		    	break;
-		    }
+		    
+		    // Change who's to play
+		    if(next == game.p1)
+		    	next = game.p2;
+		    else
+		    	next = game.p1;
 		}
-    }
+	}
 }

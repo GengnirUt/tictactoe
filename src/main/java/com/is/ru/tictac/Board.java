@@ -14,23 +14,6 @@ public class Board{
         }
     }
     
-    public int indexRow(int index){
-    	if(index < 10)
-    		return 0;
-    	else if(index < 20)
-    		return 1;
-    	else
-    		return 2;	
-    }
-    
-    public int indexCol(int index){
-    	if(index == 0 || index == 10 || index == 20)
-    		return 0;
-    	else if(index == 1 || index == 11 || index == 21)
-    		return 1;
-    	else
-    		return 2;
-    }
 
     public boolean isCellEmpty(int row, int col){
         if( board[row][col] == 0 )
@@ -38,9 +21,14 @@ public class Board{
         else
             return false;
     }
+    
+    public int getBoardSize(){
+    	return size;
+    }
 
     public void markCellPlayed(int player, int row, int col){
-        if(isCellEmpty(row, col))
+    	if(!isCellEmpty(row, col))
+    		throw new IllegalArgumentException("Cell (" + row + "," + col + ") has been marked already!!!");
            board[row][col] = player;
     }
     

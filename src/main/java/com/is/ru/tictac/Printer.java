@@ -28,11 +28,11 @@ public class Printer {
 		firstLine();
 	}
 	
-	public void printBoard(Board gameBoard)
+	public static void printBoard(Board gameBoard)
 	{
-		for(int x = 0; x < 3; x++)
+		for(int x = 0; x < gameBoard.getBoardSize(); x++)
 		{
-			for(int y = 0; y < 3; y++)
+			for(int y = 0; y < gameBoard.getBoardSize(); y++)
 			{
 				if(gameBoard.getPlayerAtRowCol(x,y) == 1) // X for player 1
 				{
@@ -72,7 +72,7 @@ public class Printer {
 	
 	public static void playerMove(int number)
 	{
-		System.out.println("Player " + number + " move:");
+		System.out.println("Player " + number + " move: ");
 	}
 	
 	public static void spotTakenOrIllegal()

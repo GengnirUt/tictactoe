@@ -6,14 +6,14 @@ import edu.princeton.cs.algs4.StdIn;
 
 public class Input {
 	
-        public static boolean getPlayerMode()
+	public static boolean getPlayerMode()
 	{
         int mode = StdIn.readInt();
-        while(mode != 0 || mode != 1)
+        while(mode != 0 && mode != 1)
         	mode = StdIn.readInt();
         if(mode == 0)
-        	return false; // player is human
-        return true;
+        	return true; // player is human
+        return false;
 	}
 	
 	public static int[] getPlayerMove()
