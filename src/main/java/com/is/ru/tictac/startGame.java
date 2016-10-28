@@ -133,7 +133,7 @@ public class startGame {
 	int maxTurns = 9; // only 9 moves possible
 	
 	Player next = game.p1;
-	Printer.printEmptyBoard();
+	Printer.printBoard(game.board);
 	for(int round = 0; round < maxTurns; round++)
 	    {
 		

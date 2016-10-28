@@ -19,17 +19,9 @@ public class Printer {
 	System.out.print("Enter zero (0) if you are human and one (1) if you are computer: "); 
     }
     
-    public static void printEmptyBoard()
-    {
-	firstLine();
-	secondLine();
-	firstLine();
-	secondLine();
-	firstLine();
-    }
-    
     public static void printBoard(Board gameBoard)
     {
+	System.out.println();
 	for(int x = 0; x < gameBoard.getBoardSize(); x++)
 	    {
 		for(int y = 0; y < gameBoard.getBoardSize(); y++)
@@ -58,17 +50,9 @@ public class Printer {
 			System.out.println("-----" + "+" + "-----" + "+" + "-----");
 		    }
 	    }
+		System.out.println();
     }
-    private static void firstLine()
-    {
-	System.out.println("     " + "|" + "     " + "|" + "     ");
-    }
-    
-    private static void secondLine()
-    {
-	System.out.println("-----" + "+" + "-----" + "+" + "-----");
-    }
-    
+
     public static void playerMove(int number)
     {
 	System.out.println("Player " + number + " move: ");

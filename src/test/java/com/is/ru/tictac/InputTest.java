@@ -9,9 +9,6 @@ import java.io.ByteArrayInputStream;
 
 public class InputTest {
 	
-//	public static void main(String args[]) {
-//		org.junit.runner.JUnitCore.main("com.is.ru.tictac.InputTest");
-//    }
 
 	@Test
 	public void testGetPlayerMode() {
@@ -20,12 +17,10 @@ public class InputTest {
 	    assertTrue(Input.getPlayerMode());
 	}
 
-    /*	There is an error in the arraycreation -> nosuchelementexception
 	@Test
         public void testGetPlayerMove() {
 	    String inputData = "1 2";
 	    System.setIn(new ByteArrayInputStream(inputData.getBytes()));
 	    assertArrayEquals(new int[] {1,2}, Input.getPlayerMove());
     }
-    */
 }

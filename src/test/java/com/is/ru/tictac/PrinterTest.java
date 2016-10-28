@@ -42,23 +42,7 @@ public class PrinterTest {
 	expectedOutput += "Enter zero (0) if you are human and one (1) if you are computer: ";
 	assertEquals(expectedOutput, outData.toString());
     }
-    
-    @Test
-    public void testPrintEmptyBoard() {
-        Printer printer = new Printer();
 	
-	ByteArrayOutputStream outData = new ByteArrayOutputStream();
-	System.setOut(new PrintStream(outData));
-	
-	printer.printEmptyBoard();
-	String expectedOutput = "     |     |     \n";
-	for(int i = 0; i < 2; i++){
-	    expectedOutput += "-----+-----+-----\n";
-	    expectedOutput += "     |     |     \n";
-	}
-	assertEquals(expectedOutput, outData.toString());
-    }
-    
     @Test
     public void testPlayerMove() {
         Printer printer = new Printer();
@@ -69,7 +53,7 @@ public class PrinterTest {
 	printer.playerMove(1);
 	assertEquals("Player 1 move: \n", outData.toString());
     }
-    
+	
     @Test
     public void testSpotTakenOrIllegal() {
         Printer printer = new Printer();
@@ -89,11 +73,12 @@ public class PrinterTest {
 	System.setOut(new PrintStream(outData));
 	
 	printer.printBoard(new Board());
-	String expectedOutput = "     |     |     \n";
+	String expectedOutput = "\n     |     |     \n";
 	for(int i = 0; i < 2; i++){
 	    expectedOutput += "-----+-----+-----\n";
 	    expectedOutput += "     |     |     \n";
 	}
+	expectedOutput += "\n";
 	assertEquals(expectedOutput, outData.toString());
     }
     
