@@ -26,6 +26,17 @@ public class startGameTest {
     }
     
     @Test
+    public void checkForWinSecondRow()
+    {
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,1,0); // player 1
+        game.board.markCellPlayed(1,1,1);
+        game.board.markCellPlayed(1,1,2);
+        assertTrue("returns true", game.checkForWin(1));
+    }
+    
+        
+    @Test
     public void TestCheckForTwoInARowHorizontal()
     {
     	startGame game = new startGame(true, true);
