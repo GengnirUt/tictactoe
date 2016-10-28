@@ -35,7 +35,35 @@ public class startGameTest {
         assertTrue("returns true", game.checkForWin(1));
     }
     
-        
+    public void checkForWinThirdRowReturnsTrue()
+    {
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,2,0); // player 1
+        game.board.markCellPlayed(1,2,1);
+        game.board.markCellPlayed(1,2,2);
+        assertTrue("returns true", game.checkForWin(1));
+    }
+
+    @Test
+    public void checkForWinThirdRowReturnsFalse()
+    {
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,2,0); // player 1
+        game.board.markCellPlayed(2,2,1); // player 2
+        game.board.markCellPlayed(1,2,2); // player 1
+        assertFalse("returns false", game.checkForWin(1));
+    }
+
+    @Test
+    public void checkForWinFirstColReturnsTrue()
+    {
+
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,0,0); // player 1
+        game.board.markCellPlayed(1,1,0); // player 2
+        game.board.markCellPlayed(1,2,0); // player 1
+        assertTrue("returns true", game.checkForWin(1));
+    }    
     @Test
     public void TestCheckForTwoInARowHorizontal()
     {
@@ -73,6 +101,7 @@ public class startGameTest {
     	game.board.markCellPlayed(2, 2, 1);
     	assertEquals(-1, GamePlay.checkForTwoInARowDiagonal(2, game.board));
     }
-	
+
+    	
 	
 }
