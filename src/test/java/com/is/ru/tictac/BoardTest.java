@@ -31,33 +31,32 @@ public class BoardTest{
         int x = board.getPlayerAtRowCol(0, 0);
         assertEquals(0, x);
     }
-    
-    @Test
-    public void testIndexRow(){
-    	int index = 5;
-    	assertEquals(0, board.indexRow(index));
-    	index = 15;
-    	assertEquals(1, board.indexRow(index));
-    	index = 25;
-    	assertEquals(2, board.indexRow(index));
+	
+	@Test
+    public void computerPlayerMoveTestReturnsFalse_1()
+    {
+        Board board = new Board();
+        board.markCellPlayed(1, 1, 1); // player 1 and 1 for computer
+        assertFalse(board.isCellEmpty(1, 1));
     }
     
     @Test
-    public void testIndexCol(){
-    	int index = 0;
-    	assertEquals(0, board.indexRow(index));
-    	index = 10;
-    	assertEquals(0, board.indexRow(index));
-    	index = 20;
-    	assertEquals(0, board.indexRow(index));
-    	index = 1;
-    	assertEquals(1, board.indexRow(index));
-    	index = 11;
-    	assertEquals(1, board.indexRow(index));
-    	index = 21;
-    	assertEquals(1, board.indexRow(index));
-    	index = 22;
-    	assertEquals(2, board.indexRow(index));
+    public void computerPlayerMoveTestReturnsTrue_1()
+    {
+        Board board = new Board();
+        board.markCellPlayed(1, 0, 0); // player 1 and 1 for computer
+        assertTrue(game.board.isCellEmpty(1, 1));
     }
+	
+	 @Test
+    public void computerPlayerMoveTestReturnsFalse_2()
+    {
+        Board board = new Board();
+        board.markCellPlayed(0, 0, 1); // player 1 and 1 for computer
+		board.markCellPlayed(1, 0, 0); // player 1 and 1 for computer
+        assertFalse(game.board.isCellEmpty(0, 1));
+    }
+    
+    
 }
 

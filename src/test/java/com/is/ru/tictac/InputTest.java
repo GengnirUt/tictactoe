@@ -16,7 +16,7 @@ public class InputTest {
 	    String inputData = "0";
             Input input = new Input();
             System.setIn(new ByteArrayInputStream(inputData.getBytes()));	
-	    assertEquals(0, input.getPlayerMode());
+	    assertEquals(true, input.getPlayerMode());
 	}
 	
 	@Test
