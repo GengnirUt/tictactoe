@@ -13,6 +13,7 @@ public class Board{
                 board[i][j] = 0;
         }
     }
+    
 
     public boolean isCellEmpty(int row, int col){
         if( board[row][col] == 0 )
@@ -20,9 +21,14 @@ public class Board{
         else
             return false;
     }
+    
+    public int getBoardSize(){
+    	return size;
+    }
 
     public void markCellPlayed(int player, int row, int col){
-        if(isCellEmpty(row, col))
+    	if(!isCellEmpty(row, col))
+    		throw new IllegalArgumentException("Cell (" + row + "," + col + ") has been marked already!!!");
            board[row][col] = player;
     }
     

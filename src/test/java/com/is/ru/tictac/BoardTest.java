@@ -1,7 +1,12 @@
+
 package com.is.ru.tictac;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+
 import org.junit.Test;
 
 public class BoardTest{
@@ -31,6 +36,32 @@ public class BoardTest{
         int x = board.getPlayerAtRowCol(0, 0);
         assertEquals(0, x);
     }
-
+	
+	@Test
+    public void computerPlayerMoveTestReturnsFalse_1()
+    {
+        Board board = new Board();
+        board.markCellPlayed(1, 1, 1); // player 1 and 1 for computer
+        assertFalse(board.isCellEmpty(1, 1));
+    }
+    
+    @Test
+    public void computerPlayerMoveTestReturnsTrue_1()
+    {
+        Board board = new Board();
+        board.markCellPlayed(1, 0, 0); // player 1 and 1 for computer
+        assertTrue(board.isCellEmpty(1, 1));
+    }
+	
+	 @Test
+    public void computerPlayerMoveTestReturnsFalse_2()
+    {
+        Board board = new Board();
+        board.markCellPlayed(1, 0, 1); // player 1 and 1 for computer
+	board.markCellPlayed(2, 0, 0); // player 1 and 1 for computer
+	assertFalse(board.isCellEmpty(0, 1));
+    }
+    
+    
 }
 
