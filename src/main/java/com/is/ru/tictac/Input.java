@@ -18,9 +18,10 @@ public class Input {
 	
 	public static int[] getPlayerMove()
 	{    
+	    Scanner in = new Scanner(System.in);
 	    int[] move = new int[2];
-	    move[0] = StdIn.readInt(); // row move
-	    move[1] = StdIn.readInt(); // col move
+	    move[0] = in.nextInt(); // X move
+	    move[1] = in.nextInt(); // Y move
 	    return move;
 	}
 
