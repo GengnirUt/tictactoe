@@ -203,5 +203,111 @@ public class GamePlayTest {
         game.testFunctionForCheckForWin(1,2,2);
         assertFalse("returns false", game.checkForWin(1));
     }
-
+    
+    @Test
+    public void TestCheckForTwoInARowHorizontal()
+    {
+    	GamePlay game = new GamePlay();
+    	game.playedMove(1, 0, 0);
+    	game.playedMove(1, 0, 1);
+    	assertEquals(2, gameplay.checkForTwoInARowHorizontal(1));
+    	game.playedMove(0, 0, 0);
+    	game.playedMove(0, 0, 1);
+    	assertEquals(-1, gameplay.checkForTwoInARowHorizontal(1));
+    }
+    
+    @Test
+    public void TestCheckForTwoInARowVertical()
+    {
+    	GamePlay game = new GamePlay();
+    	game.playedMove(1, 0, 0);
+    	game.playedMove(1, 1, 0);
+    	assertEquals(20, gameplay.checkForTwoInARowVertical(1));
+    	game.playedMove(0, 0, 0);
+    	game.playedMove(0, 1, 0);
+    	assertEquals(-1, gameplay.checkForTwoInARowVertical(1));
+    }
+    
+    @Test
+    public void TestCheckForTwoInARowDiagonal()
+    {
+    	GamePlay game = new GamePlay();
+    	game.playedMove(1, 0, 0);
+    	game.playedMove(1, 1, 1);
+    	assertEquals(22, gameplay.checkForTwoInARowDiagonal(1));
+    	game.playedMove(0, 0, 0);
+    	game.playedMove(0, 1, 1);
+    	assertEquals(-1, gameplay.checkForTwoInARowDiagonal(1));
+    }
+    
+    @Test
+    public void TestCheckForForks()
+    {
+    	GamePlay game = new GamePlay();
+    	game.playedMove(1, 0, 0);
+    	game.playedMove(1, 2, 2);
+    	assertEquals(2, gameplay.checkForForks(1));
+    	game.playedMove(0, 0, 0);
+    	game.playedMove(0, 2, 2);
+    	assertEquals(-1, gameplay.checkForForks(1));
+    }
+    
+    @Test
+    public void TestCheckIfCenterIsEmpty()
+    {
+    	GamePlay game = new GamePlay();
+    	assertEquals(11, gameplay.checkIfCenterIsEmpty(1));
+    	game.playedMove(1, 1, 1);
+    	assertEquals(-1, gameplay.checkIfCenterIsEmpty(1));
+    }
+    
+    @Test
+    public void TestCheckForOpponentInCorner()
+    {
+    	GamePlay game = new GamePlay();
+    	game.playedMove(2, 0, 0);
+    	assertEquals(22, gameplay.checkForOpponentinCorner(1));
+    	game.playedMove(0, 0, 0);
+    	
+    	game.playedMove(2, 0, 2);
+    	assertEquals(20, gameplay.checkForOpponentinCorner(1));
+    	game.playedMove(0, 0, 2);
+    	
+    	game.playedMove(2, 2, 2);
+    	assertEquals(0, gameplay.checkForOpponentinCorner(1));
+    	game.playedMove(0, 2, 2);
+    	
+    	game.playedMove(2, 2, 0);
+    	assertEquals(2, gameplay.checkForOpponentinCorner(1));
+    }
+    
+    @Test
+    public void TestCheckForEmptyCorner()
+    {
+    	GamePlay game = new GamePlay();
+    	assertEquals(0, gameplay.checkForEmptyCorner(1));
+    	game.playedMove(1, 0, 0);
+    	assertEquals(2, gameplay.checkForEmptyCorner(1));
+    	game.playedMove(1, 0, 2);
+    	assertEquals(22, gameplay.checkForEmptyCorner(1));
+    	game.playedMove(1, 2, 2);
+    	assertEquals(20, gameplay.checkForEmptyCorner(1));
+    	game.playedMove(1, 2, 0);
+    	assertEquals(-1, gameplay.checkForEmptyCorner(1));
+    }
+    
+    @Test
+    public void TestCheckForEmptySide()
+    {
+    	GamePlay game = new GamePlay();
+    	assertEquals(1, gameplay.checkForEmptySide(1));
+    	game.playedMove(1, 0, 1);
+    	assertEquals(12, gameplay.checkForEmptySide(1));
+    	game.playedMove(1, 1, 2);
+    	assertEquals(21, gameplay.checkForEmptySide(1));
+    	game.playedMove(1, 2, 1);
+    	assertEquals(10, gameplay.checkForEmptySide(1));
+    	game.playedMove(1, 1, 0);
+    	assertEquals(-1, gameplay.checkForEmptySide(1));
+    }
 }

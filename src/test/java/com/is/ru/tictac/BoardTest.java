@@ -31,6 +31,33 @@ public class BoardTest{
         int x = board.getPlayerAtRowCol(0, 0);
         assertEquals(0, x);
     }
-
+    
+    @Test
+    public void testIndexRow(){
+    	int index = 5;
+    	assertEquals(0, board.indexRow(index));
+    	index = 15;
+    	assertEquals(1, board.indexRow(index));
+    	index = 25;
+    	assertEquals(2, board.indexRow(index));
+    }
+    
+    @Test
+    public void testIndexCol(){
+    	int index = 0;
+    	assertEquals(0, board.indexRow(index));
+    	index = 10;
+    	assertEquals(0, board.indexRow(index));
+    	index = 20;
+    	assertEquals(0, board.indexRow(index));
+    	index = 1;
+    	assertEquals(1, board.indexRow(index));
+    	index = 11;
+    	assertEquals(1, board.indexRow(index));
+    	index = 21;
+    	assertEquals(1, board.indexRow(index));
+    	index = 22;
+    	assertEquals(2, board.indexRow(index));
+    }
 }
 
