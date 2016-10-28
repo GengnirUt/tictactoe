@@ -89,6 +89,28 @@ public class startGameTest {
 
         
     @Test
+    public void checkForWinDiagonalReturnsTrue_1()
+    {
+
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,0,0); // player 1
+        game.board.markCellPlayed(1,1,1); // player 2
+        game.board.markCellPlayed(1,2,2); // player 1
+        assertTrue("returns true", game.checkForWin(1));
+    }
+    
+    @Test
+    public void checkForWinDiagonalReturnsTrue_2()
+    {
+
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,0,2); // player 1
+        game.board.markCellPlayed(1,1,1); // player 2
+        game.board.markCellPlayed(1,2,0); // player 1
+        assertTrue("returns true", game.checkForWin(1));
+    }
+
+    @Test
     public void TestCheckForTwoInARowHorizontal()
     {
     	startGame game = new startGame(true, true);
