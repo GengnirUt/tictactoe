@@ -7,7 +7,39 @@ import org.junit.Test;
 
 public class startGameTest {
 	
-    
+    /* // The 3 functions below are not testable because the
+       // game.checkIfOnBoard(move) is now private in GamePlay.java
+    @Test
+    public void isMoveLegalTrue()
+    {
+        startGame game = new startGame(true, true);
+        int[] move = new int[2];
+        move[0] = 0;
+        move[1] = 1;
+        assertTrue("this is legal move", game.checkIfOnBoard(move));
+    }
+
+    @Test
+    public void isMoveLegalFalse()
+    {
+        startGame game = new startGame(true, true);
+        int[] move = new int[2];
+        move[0] = 3;
+        move[1] = 4;
+        assertFalse("this is legal move", game.checkIfOnBoard(move));
+    }
+
+    @Test
+    public void isMoveLegalTestReturnsTrue()
+    {
+        startGame game = new startGame(true, true);
+        int[] move = new int[2];
+        move[0] = 0;
+        move[1] = 1;
+        assertTrue("this is legal move", game.checkIfOnBoard(move));
+    }
+    */
+
     @Test
     public void checkForWinTestReturnsFalse()
     {
