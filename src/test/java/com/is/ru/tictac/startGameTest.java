@@ -6,21 +6,26 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class startGameTest {
-	/*  Can we throw this away now?
+	
+    
     @Test
-    public void greetResultsInHello() {
-	World world = new World();
-	assertEquals("Hello", world.greet());
-    }
-	*/
-	@Test
     public void checkForWinTestReturnsFalse()
     {
 	startGame game = new startGame(true, true);
         assertFalse(game.checkForWin(1));
     }  
 
-	@Test
+    @Test
+    public void checkForWinFirstRow()
+    {
+        startGame game = new startGame(true, true);
+        game.board.markCellPlayed(1,0,0); // player 1
+        game.board.markCellPlayed(1,0,1);
+        game.board.markCellPlayed(1,0,2);
+        assertTrue("returns false", game.checkForWin(1));
+    }
+    
+    @Test
     public void TestCheckForTwoInARowHorizontal()
     {
     	startGame game = new startGame(true, true);
