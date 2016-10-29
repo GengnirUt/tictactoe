@@ -10,7 +10,7 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin. 'jacoco'
+apply plugin: 'jacoco'
 
 mainClassName = "com.is.ru.tictac.startGame"
 
