@@ -74,6 +74,9 @@ public class Database{
 	    } catch (SQLException e) {
 	    	System.out.println(e.getMessage());
         }
+
+	// Now lets add the tables to the database
+	createTables();
     }
 
 
