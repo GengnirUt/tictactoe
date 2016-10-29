@@ -166,6 +166,7 @@ public class startGame {
 		    if(round > 3 && game.checkForWin(next.getPlayerNr())){   
 		    	addGameInfoToDatabase(next, round);
 		    	Printer.winner(next.getPlayerNr());		    	
+			Printer.finalGameInfo(next.getPlayerNr());
 		    	break;
 		    }
 
