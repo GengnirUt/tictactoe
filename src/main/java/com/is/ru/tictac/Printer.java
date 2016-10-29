@@ -68,17 +68,22 @@ public class Printer {
 	System.out.println("Player " + number + " won!");
     }
     
-    public static void printTable(int winner, Database db)
+    public static void finalGameInfo(int winner)
     {
-    	int winsInRow = db.selectPlayerWinningStreak(winner);
-    	int p1Wins = db.selectPlayerHasWon(1);
-    	int p2Wins = db.selectPlayerHasWon(2);
+	int games = Database.selectGamesInTotal();
+    	int winsInRow = Database.selectPlayerWinningStreak(winner);
+    	int p1Wins = Database.selectPlayerHasWon(1);
+    	int p2Wins = Database.selectPlayerHasWon(2);
+	//int p3Wins = Database.selectPlayerHasWon(3); //cpu
+	
+	System.out.println("The game has now been played: " + games + " times, since installed. \n");
+
     	if(winsInRow > 1)
     	{
     		System.out.println("\nPlayer " + winner + " has won " + winsInRow + " times in a row!!\n");
     	}
     	System.out.println("\nLEADER BOARD\n");
-    	if(p2Wins > p1Wins)
+    	if(p2Wins > p1Wins )
     	{
     		System.out.println("Player 2 ...." + p2Wins + " wins");
     		System.out.println("Player 1 ...." + p1Wins + " wins\n");
@@ -89,4 +94,7 @@ public class Printer {
     		System.out.println("Player 2 ...." + p2Wins + " wins\n");
     	}
     }
+
+
+
 }
