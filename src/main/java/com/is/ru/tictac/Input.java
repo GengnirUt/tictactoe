@@ -2,15 +2,14 @@ package com.is.ru.tictac;
 
 import java.util.Scanner;
 
-import edu.princeton.cs.algs4.StdIn;
-
 public class Input {
 	
 	public static boolean getPlayerMode()
 	{
-        int mode = StdIn.readInt();
+		Scanner in = new Scanner(System.in);
+        int mode = in.nextInt();
         while(mode != 0 && mode != 1)
-        	mode = StdIn.readInt();
+        	mode = in.nextInt();
         if(mode == 0)
         	return true; // player is human
         return false;
