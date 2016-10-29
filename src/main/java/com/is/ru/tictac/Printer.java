@@ -68,4 +68,25 @@ public class Printer {
 	System.out.println("Player " + number + " won!");
     }
     
+    public static void printTable(int winner, Database db)
+    {
+    	int winsInRow = db.selectPlayerWinningStreak(winner);
+    	int p1Wins = db.selectPlayerHasWon(1);
+    	int p2Wins = db.selectPlayerHasWon(2);
+    	if(winsInRow > 1)
+    	{
+    		System.out.println("\nPlayer " + winner + " has won " + winsInRow + " times in a row!!\n");
+    	}
+    	System.out.println("\nLEADER BOARD\n");
+    	if(p2Wins > p1Wins)
+    	{
+    		System.out.println("Player 2 ...." + p2Wins + " wins");
+    		System.out.println("Player 1 ...." + p1Wins + " wins\n");
+    	}
+    	else
+    	{
+    		System.out.println("Player 1 ...." + p1Wins + " wins");
+    		System.out.println("Player 2 ...." + p2Wins + " wins\n");
+    	}
+    }
 }
