@@ -145,39 +145,48 @@ public class GamePlay {
 	   }
 	*/
 	if(player == board.getPlayerAtRowCol(0, 0) 
-	   && player == board.getPlayerAtRowCol(0, 1)){
+	   && player == board.getPlayerAtRowCol(0, 1)
+	   && board.isCellEmpty(0, 2)){
 	    return 2; // first row - Left + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(0, 1) 
-		&& player == board.getPlayerAtRowCol(0, 2)){
+		&& player == board.getPlayerAtRowCol(0, 2)
+		&& board.isCellEmpty(0, 0)){
 	    return 0; // first row - Right + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(0, 0) 
-		&& player == board.getPlayerAtRowCol(0, 2)){
+		&& player == board.getPlayerAtRowCol(0, 2)
+		&& board.isCellEmpty(0, 1)){
 	    return 1; // first row - Right + Left
 	}
 	else if(player == board.getPlayerAtRowCol(1, 0) 
-		&& player == board.getPlayerAtRowCol(1, 1)){
+		&& player == board.getPlayerAtRowCol(1, 1)
+		&& board.isCellEmpty(1, 2)){
 	    return 12; // second row - Left + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 1) 
-		&& player == board.getPlayerAtRowCol(1, 2)){
+		&& player == board.getPlayerAtRowCol(1, 2)
+		&& board.isCellEmpty(1, 0)){
 	    return 10; // second row - Middle + Right
 	}
 	else if(player == board.getPlayerAtRowCol(1, 0) 
-		&& player == board.getPlayerAtRowCol(1, 2)){
+		&& player == board.getPlayerAtRowCol(1, 2)
+		&& board.isCellEmpty(1, 1)){
 	    return 11; // second row - Left + Right
 	}
 	else if(player == board.getPlayerAtRowCol(2, 0) 
-		&& player == board.getPlayerAtRowCol(2, 1)){
+		&& player == board.getPlayerAtRowCol(2, 1)
+		&& board.isCellEmpty(2, 2)){
 	    return 22; // third row - Left + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(2, 1) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(2, 0)){
 	    return 20; // third row - Middle + Right
 	}
 	else if(player == board.getPlayerAtRowCol(2, 0) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(2, 1)){
 	    return 21; // third row - Left + Right
 	}
 	else{
@@ -189,39 +198,48 @@ public class GamePlay {
     public static int checkForTwoInARowVertical(int player, Board board)
     {
 	if(player == board.getPlayerAtRowCol(0, 0) 
-	   && player == board.getPlayerAtRowCol(1, 0)){
+	   && player == board.getPlayerAtRowCol(1, 0)
+	   && board.isCellEmpty(2, 0)){
 	    return 20; // first row - Top + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 0) 
-		&& player == board.getPlayerAtRowCol(2, 0)){
+		&& player == board.getPlayerAtRowCol(2, 0)
+		&& board.isCellEmpty(0, 0)){
 	    return 0; // first row - Bottom + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(0, 0) 
-		&& player == board.getPlayerAtRowCol(2, 0)){
+		&& player == board.getPlayerAtRowCol(2, 0)
+		&& board.isCellEmpty(1, 0)){
 	    return 10; // first row - Top + Bottom
 	}
 	else if(player == board.getPlayerAtRowCol(0, 1) 
-		&& player == board.getPlayerAtRowCol(1, 1)){
+		&& player == board.getPlayerAtRowCol(1, 1)
+		&& board.isCellEmpty(2, 1)){
 	    return 21; // second row - Top + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 1) 
-		&& player == board.getPlayerAtRowCol(2, 1)){
+		&& player == board.getPlayerAtRowCol(2, 1)
+		&& board.isCellEmpty(0, 1)){
 	    return 1; // second row - Middle + Bottom
 	}
 	else if(player == board.getPlayerAtRowCol(0, 1) 
-		&& player == board.getPlayerAtRowCol(2, 1)){
+		&& player == board.getPlayerAtRowCol(2, 1)
+		&& board.isCellEmpty(1, 1)){
 	    return 11; // second row - Top + Bottom
 	}
 	else if(player == board.getPlayerAtRowCol(0, 2) 
-		&& player == board.getPlayerAtRowCol(1, 2)){
+		&& player == board.getPlayerAtRowCol(1, 2)
+		&& board.isCellEmpty(2, 2)){
 	    return 22; // third row - Top + Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 2) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(0, 2)){
 	    return 2; // third row - Middle + Bottom
 	}
 	else if(player == board.getPlayerAtRowCol(0, 2) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(1, 2)){
 	    return 12; // third row - Top + Bottom
 	}
 	else{
@@ -232,27 +250,33 @@ public class GamePlay {
     //Checks if a player has two cells in a single row diagonal
     public static int checkForTwoInARowDiagonal(int player, Board board){
 	if(player == board.getPlayerAtRowCol(0, 0) 
-	   && player == board.getPlayerAtRowCol(1, 1)){
+	   && player == board.getPlayerAtRowCol(1, 1)
+	   && board.isCellEmpty(2, 2)){
 	    return 22; // Top Left + Middle Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 1) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(0, 0)){
 	    return 0; // Middle Middle + Bottom Right
 	}
 	else if(player == board.getPlayerAtRowCol(0, 0) 
-		&& player == board.getPlayerAtRowCol(2, 2)){
+		&& player == board.getPlayerAtRowCol(2, 2)
+		&& board.isCellEmpty(1, 1)){
 	    return 11; // Top Left + Bottom Right
 	}
 	else if(player == board.getPlayerAtRowCol(0, 2) 
-		&& player == board.getPlayerAtRowCol(1, 1)){
+		&& player == board.getPlayerAtRowCol(1, 1)
+		&& board.isCellEmpty(2, 0)){
 	    return 20; // Top Right + Middle Middle
 	}
 	else if(player == board.getPlayerAtRowCol(1, 1) 
-		&& player == board.getPlayerAtRowCol(2, 0)){
+		&& player == board.getPlayerAtRowCol(2, 0)
+		&& board.isCellEmpty(0, 2)){
 	    return 2; // Middle Middle + Bottom Left
 	}
 	else if(player == board.getPlayerAtRowCol(2, 0) 
-		&& player == board.getPlayerAtRowCol(0, 2)){
+		&& player == board.getPlayerAtRowCol(0, 2)
+		&& board.isCellEmpty(1, 1)){
 	    return 11; // Bottom Left + Top Right
 		}
 	else{
@@ -310,19 +334,23 @@ public class GamePlay {
     //Checks if the opponent has played any of the corners and the opposite corner is empty
     public static int checkForOpponentInCorner(int player, Board board){
 	if(player != board.getPlayerAtRowCol(0, 0) 
-	   && !board.isCellEmpty(0, 0)){
+	   && !board.isCellEmpty(0, 0)
+	   && board.isCellEmpty(2, 2)){
 	    return 22;
 	}
 	else if(player != board.getPlayerAtRowCol(0, 2) 
-		&& !board.isCellEmpty(0, 2)){
+		&& !board.isCellEmpty(0, 2)
+		&& board.isCellEmpty(2, 0)){
 	    return 20;
 	}
 	else if(player != board.getPlayerAtRowCol(2, 2) 
-		&& !board.isCellEmpty(2, 2)){
+		&& !board.isCellEmpty(2, 2)
+		&& board.isCellEmpty(0, 0)){
 	    return 0;
 	}
 	else if(player != board.getPlayerAtRowCol(2, 0) 
-		&& !board.isCellEmpty(2, 0)){
+		&& !board.isCellEmpty(2, 0)
+		&& board.isCellEmpty(0, 2)){
 	    return 2;
 	}
 	else{
