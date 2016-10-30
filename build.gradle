@@ -17,12 +17,15 @@ mainClassName = "com.is.ru.tictac.startGame"
 run {
 	standardInput = System.in
 }
+
+
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
@@ -52,30 +55,10 @@ task deploy (dependsOn: jar) {
         }
 }
 
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
+jacocoTestReport {
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
-        html.enabled false
-        csv.enabled false
-    }
-}
-
-codeCoverageReport.dependsOn {
-    subprojects*.test
-}
-
-jar{
-    manifest {
-        attributes(
-            'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-            'Main-Class': 'com.is.ru.tictac.startGame'
-            ) 
+	html.enabled false
     }
 }
