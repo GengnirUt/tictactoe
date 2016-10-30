@@ -73,6 +73,7 @@ jar{
 
 task copyToLib( type: Copy ) {
     into "$buildDir/libs/lib"
+    into "../StartGame"
     from configurations.runtime
 }
 
