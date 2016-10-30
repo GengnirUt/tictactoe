@@ -43,6 +43,15 @@ dependencies {
 task stage {
    dependsOn installDist
 }
+
+task deploy (dependsOn: jar) {
+    copy {
+            from "build/libs"
+            include '*.jar'
+            into '../../StartGame'
+        }
+}
+
 task codeCoverageReport(type: JacocoReport) {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
