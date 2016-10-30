@@ -1,6 +1,6 @@
 #TicTacToe
  
-Welcome to your TicTacToe development page. We are the group "Gangnir út" and this project was origenaly a course project in Hugbúnaðarfræði T-303-HUGB at Reykjavik University.
+Welcome to your TicTacToe development page. We are the group "Gangnir út" and this project was originally a course project in Hugbúnaðarfræði T-303-HUGB at Reykjavik University.
 
 Links to project servise pages:
 * Our repository at GitHub can be found [here](https://github.com/GengnirUt/tictactoe). 
