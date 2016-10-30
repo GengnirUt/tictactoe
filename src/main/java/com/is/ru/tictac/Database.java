@@ -18,69 +18,72 @@ public class Database{
     private static final String dirName = "./Data/";
     private static final String fileName = "GameInfo.db";
 
-    private static final String createGameInfo = "CREATE TABLE IF NOT EXISTS gameinfo (\n"
-	+ "gid INTEGER PRIMARY KEY,\n"
-	+ "winnerid INTEGER NOT NULL, \n"
-	+ "moves INTEGER, \n"
-	+ "datetime REAL, \n"
-	+ "FOREIGN KEY (winnerid) REFERENCES playerinfo(pid)\n"
-	+ ");";
-
-    private static final String createPlayerInfo = "CREATE TABLE IF NOT EXISTS playerinfo (\n"
-	+ "pid INTEGER PRIMARY KEY, \n"
-	+ "name TEXT, \n"
-	+ ");";
-
+    private static final String createGameInfo = 
+    	"CREATE TABLE IF NOT EXISTS gameinfo (\n"
+    			+ "gid INTEGER PRIMARY KEY,\n"
+    			+ "winnerid INTEGER NOT NULL, \n"
+    			+ "moves INTEGER, \n"
+    			+ "datetime REAL, \n"
+    			+ "FOREIGN KEY (winnerid) REFERENCES playerinfo(pid)\n"
+    			+ ");";
+    
+    private static final String createPlayerInfo = 
+    	"CREATE TABLE IF NOT EXISTS playerinfo (\n"
+    			+ "pid INTEGER PRIMARY KEY, \n"
+    			+ "name TEXT, \n"
+    			+ ");";
 
     // A function to insert the results from the latest game into the database.
     public static void insertNewGame(int winner, int moves){
-	String sqlDate = "SELECT julianday('now') as date";
-	String sql = "INSERT INTO gameinfo(winnerid, moves, datetime) VALUES (?,?,?)";
+    	String sqlDate = "SELECT julianday('now') as date";
+    	String sql = "INSERT INTO gameinfo(winnerid, moves, datetime) VALUES (?,?,?)";
 
-	try (Connection conn = databaseConnect();
-	     PreparedStatement pstmtDate = conn.prepareStatement(sqlDate);
-	     PreparedStatement pstmt = conn.prepareStatement(sql)) {
-		Double date = Double.parseDouble(pstmtDate.executeQuery().getString("date"));
+    	try (Connection conn = databaseConnect();
+    		PreparedStatement pstmtDate = conn.prepareStatement(sqlDate);
+    		PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    		Double date = Double.parseDouble(pstmtDate.executeQuery().getString("date"));
 
-		pstmt.setInt(1, winner);
-		pstmt.setInt(2, moves);
-		pstmt.setDouble(3, date);
-		pstmt.executeUpdate();
+    		pstmt.setInt(1, winner);
+    		pstmt.setInt(2, moves);
+    		pstmt.setDouble(3, date);
+    		pstmt.executeUpdate();
 
-	    } catch (SQLException e) {
-            System.out.println(e.getMessage());
+    	} catch (SQLException e) {
+    		System.out.println(e.getMessage());
         }
 
     }
 
 
     // A function to create a new database if it is not already set up.
-    public static void createNewDatabase(){
-	File dir = new File(dirName);
+    private static void createNewDatabase(){
+    	File dir = new File(dirName);
 
-	String url = "jdbc:sqlite:" + dirName + fileName;
+    	String url = "jdbc:sqlite:" + dirName + fileName;
 
-	checkDbDirectory(dir);
+    	//	Checking for the Data directory and create it if not available.
+    	checkDbDirectory(dir);
 
-	try(Connection conn = DriverManager.getConnection(url)){
-		if (conn != null){
-		    DatabaseMetaData meta = conn.getMetaData();
-		    createTables();
-		    System.out.println("The driver name is " + meta.getDriverName());
-		    System.out.println("A new database has been created.");
-		}
+    	try(Connection conn = DriverManager.getConnection(url)){
+    		if (conn != null){
+    			DatabaseMetaData meta = conn.getMetaData();
+    			createTables();
+    			System.out.println("The driver name is " + meta.getDriverName());
+    			System.out.println("A new database has been created.");
+    		}
 	    } catch (SQLException e) {
-	    
-                System.out.println(e.getMessage());
+	    	System.out.println(e.getMessage());
         }
+
+	// Now lets add the tables to the database
+	createTables();
     }
 
 
     // A function to check if the database directory exists and create it if it isn't.
     private static void checkDbDirectory(File directory){
-	if(!directory.exists())
-	    directory.mkdir();
-
+    	if(!directory.exists())
+    		directory.mkdir();
     }
 
 
@@ -91,7 +94,11 @@ public class Database{
         try {
             String url = "jdbc:sqlite:"+dirName + fileName;
             conn = DriverManager.getConnection(url);
-            
+            if(conn == null){
+            	// creating new database if there it cannot get a connection from the url
+            	createNewDatabase();
+            }
+            	
             System.out.println("Connection to SQLite has been established.");
             return conn;
 
@@ -154,7 +161,7 @@ public class Database{
     }
 
     // Returns how often a player has won in total.
-    public int selectPlayerHasWon(int playerID){
+    public static int selectPlayerHasWon(int playerID){
 	String sql = "SELECT count(gid) AS wins FROM gameinfo WHERE winnerID = ?";
 
 	try (Connection conn = databaseConnect();
@@ -170,7 +177,7 @@ public class Database{
 
 
     // Returns how often a player has won in a row.
-    public int selectPlayerWinningStreak(int playerID){
+    public static int selectPlayerWinningStreak(int playerID){
         String sql = "SELECT count(gid) AS streak FROM gameinfo WHERE winnerID = ? AND \n"
 	    + "datetime > (SELECT MAX(datetime) FROM gameinfo WHERE winnerID <> ?)";
 
@@ -187,7 +194,7 @@ public class Database{
     }
 
     // Returns all info in the gameinfo table.
-    public void selectAll(){
+    public static void selectAll(){
         String sql = "SELECT * FROM gameinfo";
 
         try (Connection conn = databaseConnect();
@@ -207,7 +214,7 @@ public class Database{
     }
     
     // Returns how many games have been played since the database was created.
-    public int selectGamesInTotal(){
+    public static int selectGamesInTotal(){
         String sql = "SELECT count(gid) AS games FROM gameinfo";
 
         try (Connection conn = databaseConnect();
