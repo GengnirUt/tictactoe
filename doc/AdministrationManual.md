@@ -1,17 +1,17 @@
 # Administration Manual
-### 1. Introduction
-### 2. Server Application
-### 3. Desktop Application
-### 4. Program Tutorial
+### [1. Introduction](#Introduction)
+### [2. Server Application](#ServerApplication)
+### [3. Desktop Application](#DesktopApplication)
+### [4. Program Tutorial](#ProgramTutorial)
 
 
 -----
-#### Introduction
+#### Introduction <a id="Introduction"></a>
 The administration manual explains how to install and run the program. First is the case of a simple desktop application on the client machine. Secondly will be instructions on running the programs on a server through the use of Git Bash.
 
 Following that is a short tutorial on how to actually use the application.
 
-#### Server Application
+#### Server Application <a id="ServerApplication"></a>
 
 In order to run the program through a server then certain requirements must be met.
 - A program capable of connecting to a server or GitHub must be used.
@@ -25,7 +25,7 @@ Once the project itself has been downloaded from GitHub and Gradle is running on
 
 `gradle run`
 
-#### Desktop Application
+#### Desktop Application <a id="DesktopApplication"></a>
 
 Requirements:
 - Java Runtime Environment must be installed on the machine.
@@ -43,7 +43,7 @@ If Java is installed on the machine then the code to run the executable file is:
 
 `java -jar tictactoe.jar`
 
-#### Program Guide
+#### Program Guide <a id="ProgramTutorial"></a>
 
 Once the application is running it gives you the choice of selecting either a human player or a computer (AI) player by pressing *0* or *1* for either option.
 
