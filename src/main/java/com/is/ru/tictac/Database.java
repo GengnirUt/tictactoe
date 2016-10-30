@@ -51,18 +51,16 @@ public class Database{
     	} catch (SQLException e) {
     		System.out.println(e.getMessage());
         }
-
     }
 
 
     // A function to create a new database if it is not already set up.
     private static void createNewDatabase(){
-    	File dir = new File(dirName);
 
     	String url = "jdbc:sqlite:" + dirName + fileName;
 
     	//	Checking for the Data directory and create it if not available.
-    	checkDbDirectory(dir);
+    	checkDbDirectory();
 
     	try(Connection conn = DriverManager.getConnection(url)){
     		if (conn != null){
@@ -81,9 +79,10 @@ public class Database{
 
 
     // A function to check if the database directory exists and create it if it isn't.
-    private static void checkDbDirectory(File directory){
-    	if(!directory.exists())
-    		directory.mkdir();
+    private static void checkDbDirectory(){
+	File dir = new File(dirName);
+    	if(!dir.exists())
+    		dir.mkdir();
     }
 
 
