@@ -1,9 +1,9 @@
 # Design report
-### [1. Introduction] (# Introduction)
-### [2. Initial Design Ideas](# InitialDesignIdeas )
-#### [- Basic Requirements](# BasicRequirements)
-#### [- Design Choices](# DesignChoices)
-### [3. Class Diagram](# ClassDiagram)
+### [1. Introduction] (#Introduction)
+### [2. Initial Design Ideas](#InitialDesignIdeas )
+#### [- Basic Requirements](#BasicRequirements)
+#### [- Design Choices](#DesignChoices)
+### [3. Class Diagram](#ClassDiagram)
 
 ___
 #### Introduction <a id="Introduction"></a>
