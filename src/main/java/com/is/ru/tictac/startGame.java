@@ -34,13 +34,11 @@ public class startGame {
 	}
 	
 	private boolean checkMove(int[] move){
-		boolean a = (board.isCellEmpty(move[0], move[1]));
-		return a;
+	    return (board.isCellEmpty(move[0], move[1]));
 	}
 	
 	private boolean checkIfOnBoard( int[] move){
-		boolean a = (move[0] < board.getBoardSize() && move[0] < board.getBoardSize());
-		return a;
+	    return (move[0] < board.getBoardSize() && move[0] < board.getBoardSize());
 	}
 		
 	public void humanMove(int player){
