@@ -61,3 +61,12 @@ jacocoTestReport {
 	html.enabled false
     }
 }
+
+jar{
+    manifest {
+        attributes(
+            'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+            'Main-Class': 'com.is.ru.tictac.startGame'
+            ) 
+    }
+}
