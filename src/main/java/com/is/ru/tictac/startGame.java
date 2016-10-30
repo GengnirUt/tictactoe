@@ -34,13 +34,11 @@ public class startGame {
 	}
 	
 	private boolean checkMove(int[] move){
-		boolean a = (board.isCellEmpty(move[0], move[1]));
-		return a;
+	    return (board.isCellEmpty(move[0], move[1]));
 	}
 	
 	private boolean checkIfOnBoard( int[] move){
-		boolean a = (move[0] < board.getBoardSize() && move[0] < board.getBoardSize());
-		return a;
+	    return (move[0] < board.getBoardSize() && move[0] < board.getBoardSize());
 	}
 		
 	public void humanMove(int player){
@@ -130,7 +128,9 @@ public class startGame {
     //	Function that writes the winner to the database
     private static void addGameInfoToDatabase(Player p, int round) {
     	int winner = 0; 
-    	if(!p.isHuman())
+	if(p == null)
+	    winner = 4;
+    	else if(!p.isHuman())
     		winner = 3; // for CPU player
     	else
     		winner = p.getPlayerNr();
@@ -145,11 +145,11 @@ public class startGame {
     	startGame game = new startGame();
     	
     	//Board board = new Board();
-		int maxTurns = 9; // only 9 moves possible
-		
+		final int MAXTURNS = 9; // only 9 moves possible
+		boolean foundWinner = false;
 		Player next = game.p1;
 		Printer.printBoard(game.board);
-		for(int round = 0; round < maxTurns; round++)
+		for(int round = 0; round < MAXTURNS; round++)
 		{
 			
 			Printer.playerMove(next.getPlayerNr());
@@ -167,6 +167,7 @@ public class startGame {
 		    	addGameInfoToDatabase(next, round);
 		    	Printer.winner(next.getPlayerNr());		    	
 			Printer.finalGameInfo(next.getPlayerNr());
+			foundWinner = true;
 		    	break;
 		    }
 
@@ -175,6 +176,10 @@ public class startGame {
 		    	next = game.p2;
 		    else
 		    	next = game.p1;
+		}
+		if(!foundWinner){
+		    addGameInfoToDatabase(null, 9);
+		    Printer.finalGameInfo(4);
 		}
 	}	
 }
