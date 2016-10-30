@@ -16,7 +16,7 @@ import java.io.IOException;
 public class Database{
 
     private static final String dirName = "./Data/";
-    private static final String fileName = "GameInfo.db";
+    private static final String fileName = "Gameinfo.db";
 
     // A function to insert the results from the latest game into the database.
     public static void insertNewGame(int winner, int moves){
@@ -43,9 +43,6 @@ public class Database{
     private static void createNewDatabase(){
 
     	String url = "jdbc:sqlite:" + dirName + fileName;
-
-    	//	Checking for the Data directory and create it if not available.
-    	//checkDbDirectory();
 
     	try(Connection conn = DriverManager.getConnection(url)){
     		if (conn != null){
@@ -118,7 +115,7 @@ public class Database{
 
 	String playerInfo = "CREATE TABLE IF NOT EXISTS playerinfo (\n"
 	    + "pid INTEGER PRIMARY KEY, \n"
-	    + "name TEXT, \n"
+	    + "name TEXT \n"
 	    + ")";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -188,27 +185,7 @@ public class Database{
             } catch (SQLException e) {
 	    System.out.println(e.getMessage());
 	    return -1;
-        }
-    }
-
-    // Returns all info in the gameinfo table.
-    public static void selectAll(){
-        String sql = "SELECT * FROM gameinfo";
-
-        try (Connection conn = databaseConnect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)){
-             ResultSet rs = pstmt.executeQuery();
-	     
-	     while(rs.next()){
-		 System.out.println("Game: " + rs.getInt("gid") + "\t" +
-				    "Player: " + rs.getInt("winnerID") + "\t" +
-				    "Moves: " + rs.getInt("moves") + "\t" +
-				    "Time: " + rs.getString("datetime"));
-	     }
-
-            } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+	}
     }
     
     // Returns how many games have been played since the database was created.
