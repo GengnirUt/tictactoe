@@ -1,21 +1,25 @@
 #Development Manual
-###1. Introduction
-###2. Source Control
-###3. Build Environment
-###4. Additional Dependencies
+###[1. Introduction](#Introduction)
+###[2. Source Control](#SourceControl)
+###[3. Build Environment](#BuildEnvironment)
+###[4. Additional Dependencies](#AdditionalDependencies)
 
 ------
 
-#### Introduction
+#### Introduction <a id="Introduction"></a>
 
 The purpose of this document is to provide a simple reference for any future developers so that they may begin adding to the project. Below you will find all the information that should be necessary for a developer, as well as any particular practices that are required.
 
-#### Source Control
-This project is open source and uses GitHub as the source control. Link to the repository is below:
+#### Source Control <a id="SourceControl"></a>
+This project is open source and uses GitHub as the source control. Link to the repository is:
 [GitHub Repository](https://github.com/GengnirUt/tictactoe)
+Use **git clone https://github.com/GengnirUt/tictactoe** to clone the project onto your computer.
 
-#### Build Environment
-The programming language used is Java. There are many different Integrated Development Environments that can be used to program in Java, but in the case of the original version of this program, **Eclipse** was used:
+#### Build Environment <a id="BuildEnvironment"></a>
+The development server has IP address 82.221.49.74.  You should have received your login info from the IT department, when you started.
+All programming should be done there.  You can also clone the project to your local drive if you would like to work within a IDE environment. There are many different Integrated Development Environments that can be used to program in Java, but in case you are not familiar with one, you should use **Eclipse** as most of your coworkers use that.
+
+The programming language used is Java 1.8. Make sure that you have **Java SDK version 1.8+** on your machine.
 
 [Eclipse Download Link](https://eclipse.org/downloads)
 
@@ -31,7 +35,7 @@ In the case of the original project an online Ubuntu server was used to connect 
 - [Gradle Download](https://gradle.org/gradle-download/) and Installation Information.
 - For this project, Gradle version 3.1 was used.
 
-#### Additional Dependencies
+#### Additional Dependencies <a id="AdditionalDependencies"></a>
 
 In addition to the required dependencies explained above for the development of the project, these following dependencies were also used:
 
