@@ -18,6 +18,13 @@ public class InputTest {
 	}
 
 	@Test
+	public void testMultiInputInGetPlayerMode() {
+	    String inputData = "a b 1";
+	    System.setIn(new ByteArrayInputStream(inputData.getBytes()));	
+	    assertFalse(Input.getPlayerMode());
+	}
+
+	@Test
         public void testGetPlayerMove() {
 	    String inputData = "1 2";
 	    System.setIn(new ByteArrayInputStream(inputData.getBytes()));
