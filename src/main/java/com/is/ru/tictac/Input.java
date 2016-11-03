@@ -6,13 +6,13 @@ public class Input {
 	
 	public static boolean getPlayerMode()
 	{
-		Scanner in = new Scanner(System.in);
-        int mode = in.nextInt();
-        while(mode != 0 && mode != 1)
-        	mode = in.nextInt();
-        if(mode == 0)
-        	return true; // player is human
-        return false;
+		Scanner in = new Scanner(System.in).useDelimiter("\\D*");
+        	int mode = in.nextInt();
+        	while(mode != 0 && mode != 1)
+        		mode = in.nextInt();
+        	if(mode == 0)
+        		return true; // player is human
+        	return false;
 	}
 	
 	public static int[] getPlayerMove()
@@ -23,5 +23,4 @@ public class Input {
 	    move[1] = in.nextInt(); // Y move
 	    return move;
 	}
-
 }
